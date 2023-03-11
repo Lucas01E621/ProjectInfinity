@@ -1,0 +1,104 @@
+
+Mods: {
+	ProjectInfinity: {
+		Biomes: {
+			AsteriodBiomeMB.DisplayName: Asteriod Biome
+			CrystalDeserMB.DisplayName: Crystal Desert
+		}
+
+		NPCs: {
+			CrystalHeartBody.DisplayName: Crystal Heart
+			bob.DisplayName: bob
+			CrystalHive.DisplayName: Crystal Hive
+			CrystalVein.DisplayName: Crystal Vein
+		}
+
+		Buffs: {
+			CrystalHeartDebuff: {
+				DisplayName: Crystal Heart Cooldown
+				Description: You can revive again
+			}
+
+			NMSCooldown: {
+				DisplayName: Nightmare Shriek Cooldown
+				Description: Nightmare Shriek is on cooldown
+			}
+
+			souldecay: {
+				DisplayName: Soul Decay
+				Description: Your soul is slowly decaying
+			}
+
+			UpwardsBoostBuff: {
+				DisplayName: u boost
+				Description: Your soul is slowly decaying
+			}
+		}
+
+		Items: {
+			CrystalHeart: {
+				DisplayName: Crystal Heart
+				Tooltip: Saves you from dying once
+			}
+
+			ManaOverloader: {
+				DisplayName: Mana Overloader
+				Tooltip: Grants Magic damage and crit chance based on your mana.
+			}
+
+			NightmareShriekItem: {
+				DisplayName: Nightmare Shriek
+				Tooltip: zattiri zort zort
+			}
+
+			examplebar.DisplayName: Example bar
+			ArenaDoorItem.DisplayName: Arena door
+			AsteroidBlockItem.DisplayName: Asteriod Block
+			CrystalAltarItem.DisplayName: Crystal altar
+			CrystalGlassWallItem.DisplayName: Crystal glass wall item
+			CrystalSandstoneBlock.DisplayName: Crystal sandstone
+			CrystalSandstoneBlockWallItem.DisplayName: Crystal sandstone wall item
+			exampleore.DisplayName: Example ore
+			InvisibleWallItem.DisplayName: Invisible wall item
+			CrystalWand.DisplayName: Crystal Wand
+			SubworldItem.DisplayName: Subworld Item
+			PHwand.DisplayName: placeholder wand
+			ProjDeneme.DisplayName: deneme
+			SoulSword.DisplayName: soulsword
+
+			CrystalGun: {
+				DisplayName: Crystal gun
+				Tooltip:
+					'''
+					'A giant crystal cannon forged in the crystal desert'
+					it somewhat look similar
+					'''
+			}
+
+			PHbow.DisplayName: placeholder bow
+			PHbowsplit.DisplayName: split bow
+		}
+
+		Projectiles: {
+			NightmareShriekProj.DisplayName: Nightmare Shriek Proj
+			NightmareShriekProj1.DisplayName: Nightmare Shriek Proj1
+			DenemeProj.DisplayName: Deneme Proj
+			PHwandproj.DisplayName: P Hwandproj
+			PHwandproj1.DisplayName: P Hwandproj1
+			SoulSwordProj.DisplayName: Soul Sword Proj
+			CrystalGunProj.DisplayName: Crystal laser
+			PHbullet.DisplayName: P Hbullet
+			PHbullet2.DisplayName: P Hbullet2
+			PHbulletsplit.DisplayName: P Hbulletsplit
+			PrismParticleProj.DisplayName: Crystalprism
+			PrismProj.DisplayName: Crystalprism
+			CrystalHiveProj.DisplayName: Crystal Hive Proj
+			UpwardsBoost.DisplayName: Upwards Boost
+		}
+
+		Tiles: {
+			CrystalAltar.MapEntry: Crystal Altar
+			exampletile.MapEntry: Example Tile
+		}
+	}
+}

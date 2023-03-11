@@ -1,0 +1,4 @@
+displayName = Ocean Of Infinity
+author = AlphaLucy
+version = 0.1
+modReferences = SubworldLibrary
