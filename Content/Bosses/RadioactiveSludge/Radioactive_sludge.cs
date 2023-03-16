@@ -61,7 +61,7 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
 
             if (!Main.dedServ)
             {
-                Music = MusicLoader.GetMusicSlot(Mod, "Content/OST/Radioactive_catastrophe");
+                Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Radioactive_catastrophe");
             }
         }
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
