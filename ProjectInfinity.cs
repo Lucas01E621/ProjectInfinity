@@ -1,9 +1,16 @@
+using Microsoft.Xna.Framework.Graphics;
 using ProjectInfinity.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Terraria;
 using Terraria.ModLoader;
+using Terraria.Graphics.Effects;
+using Terraria.Graphics.Shaders;
+using Terraria.ID;
+using Microsoft.Xna.Framework;
+using ProjectInfinity.Content.Items.Dye;
 
 namespace ProjectInfinity
 {
@@ -11,11 +18,6 @@ namespace ProjectInfinity
 	{
         private List<IOrderedLoadable> loadCache;
         public static ProjectInfinity Instance { get; set; }
-
-		public ProjectInfinity()
-		{
-			
-		}
 		public override void Load()
 		{
             Instance = this;
@@ -56,6 +58,9 @@ namespace ProjectInfinity
             MethodInfo UIProgress_set_SubProgressText = typeof(Mod).Assembly.GetType("Terraria.ModLoader.UI.UIProgress")!.GetProperty("SubProgressText", BindingFlags.Public | BindingFlags.Instance)!.GetSetMethod()!;
 
             UIProgress_set_SubProgressText.Invoke(Interface_loadMods.GetValue(null), new object[] { text });
+        }
+        public void LoadFX()
+        {
         }
     }
 }

@@ -2,11 +2,13 @@
 using Terraria.ID;
 using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
+using ProjectInfinity.Core;
 
 namespace ProjectInfinity.Content.Items.Weapons.Melee
 {
     public class Test : ModItem
     {
+        public override string Texture => AssetDirectory.Melee + Name;
         public override void SetStaticDefaults()
         {
             Tooltip.SetDefault("i use this to punish bosses for not following my orders,YOU SHALL DIE INFERIOR BEING."); // The (English) text shown below your weapon's name.

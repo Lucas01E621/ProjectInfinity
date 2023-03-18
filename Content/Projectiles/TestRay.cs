@@ -37,9 +37,9 @@ namespace ProjectInfinity.Content.Projectiles
             Projectile.ai[0]++;
             if (Projectile.ai[0] == 60)
             {
-                for (int i = 0; i < 24; i++)
+                for (int i = 0; i < 72; i++)
                 {
-                    Vector2 vel = Vector2.UnitX.RotatedBy(MathHelper.ToRadians(i * 15));
+                    Vector2 vel = Vector2.UnitX.RotatedBy(MathHelper.ToRadians(i * 5));
                     vel.Normalize();
                     SpawnRaycast(vel, 5);
                 }
@@ -53,7 +53,7 @@ namespace ProjectInfinity.Content.Projectiles
             if (proj.ModProjectile is raycastproj1)
             {
                 (proj.ModProjectile as raycastproj1).parent = this;
-                (proj.ModProjectile as raycastproj1).maxDist = 700f;
+                (proj.ModProjectile as raycastproj1).maxDist = 300f;
             }
                 
         }

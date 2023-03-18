@@ -11,11 +11,13 @@ using Terraria.DataStructures;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ObjectData;
 using ProjectInfinity.Content.Items.Blocks;
+using ProjectInfinity.Core;
 
 namespace ProjectInfinity.Content.Tiles
 {
     internal class AsteroidBlock : ModTile
     {
+        public override string Texture => AssetDirectory.AsteroidField_Tiles + Name;
         public override void SetStaticDefaults()
         {
             Main.tileSolid[Type] = true;

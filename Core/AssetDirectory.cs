@@ -38,6 +38,7 @@ namespace ProjectInfinity.Core
 		//Tiles
 		public const string Tiles = Assets + "Tiles/";
 		public const string CrystalDesert_Tiles = Tiles + "CrystalDesert/";
+		public const string AsteroidField_Tiles = Tiles + "AsteroidField/";
 		
 		
 		public const string Debug = Assets + "Default";

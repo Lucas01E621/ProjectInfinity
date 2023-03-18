@@ -15,6 +15,7 @@ namespace ProjectInfinity.Content.Projectiles
 {
     internal class raycastproj : ModProjectile
     {
+        public override string Texture => AssetDirectory.Projectiles + Name;
         public float maxDist { get; set; }
         public static Rectangle checkBox = new();
         

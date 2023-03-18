@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ProjectInfinity.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace ProjectInfinity.Content.Projectiles
 {
     internal class raycastproj1 : ModProjectile
     {
+        public override string Texture => AssetDirectory.Projectiles + Name;
         public float maxDist { get; set; }
         public TestRay parent { get; set; }
 

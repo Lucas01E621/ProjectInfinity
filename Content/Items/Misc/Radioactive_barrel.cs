@@ -5,11 +5,13 @@ using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
 using ProjectInfinity.Content.Bosses;
 using ProjectInfinity.Content.Bosses.RadioactiveSludge;
+using ProjectInfinity.Core;
 
 namespace ProjectInfinity.Content.Items.Misc
 {
     public class Radioactive_barrel : ModItem
     {
+        public override string Texture => AssetDirectory.Misc + Name;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Radioactive Barrel");

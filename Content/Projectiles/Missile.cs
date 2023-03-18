@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ProjectInfinity.Core;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,6 +9,7 @@ namespace ProjectInfinity.Content.Projectiles
 {
     internal class Missile : ModProjectile
     {
+        public override string Texture => AssetDirectory.Projectiles + Name;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Missile");

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ProjectInfinity.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace ProjectInfinity.Content.Tiles
 {
     internal class ArenaDoor : ModTile
     {
+        public override string Texture => AssetDirectory.CrystalDesert_Tiles + Name;
         public bool state;
         public override void SetStaticDefaults()
         {
