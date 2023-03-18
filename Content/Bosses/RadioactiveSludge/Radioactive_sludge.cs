@@ -1,4 +1,4 @@
-﻿using ProjectInfinity.Content.Projectiles;
+using ProjectInfinity.Content.Projectiles;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
@@ -6,6 +6,7 @@ using Terraria.DataStructures;
 using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
+using ProjectInfinity.Common.Systems;
 
 namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
 {
@@ -45,7 +46,7 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
             NPC.height = 80;
             NPC.damage = 80;
             NPC.defense = 40;
-            NPC.lifeMax = 40000;
+            NPC.lifeMax = 20000;
             NPC.HitSound = SoundID.NPCHit1;
             NPC.DeathSound = SoundID.NPCDeath1;
             NPC.knockBackResist = 0f;
@@ -57,6 +58,7 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
             NPC.npcSlots = 10f;
             NPC.aiStyle = -1;
             NPC.scale = 2f;
+            
 
 
             if (!Main.dedServ)
@@ -141,6 +143,7 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
             Hover,
             Fall,
             Gamma,
+            Jumpy,
         }
 
         public ref float AI_State => ref NPC.ai[0];
@@ -175,8 +178,14 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
             }
 
 
-
-
+            if (NPC.Distance(Main.player[NPC.target].position) > 2500)
+            {
+                NPC.position.X = Main.player[NPC.target].position.X;
+                NPC.position.Y = Main.player[NPC.target].position.Y - 400f;
+                Vector2 speed = Main.rand.NextVector2Unit((float)MathHelper.Pi * 3 / 2, (float)MathHelper.Pi);
+                Dust dust = Dust.NewDustPerfect(NPC.Center, DustID.Flare, speed * 20, 5, Color.Green);
+                dust.noGravity = true;
+            }
 
 
 
@@ -259,14 +268,13 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
                 case (float)ActionState.Hover:
                     Hover();
                     break;
-                //include the hover after tests
                 case (float)ActionState.Fall:
                     Fall();
                     break;
                 case (float)ActionState.Gamma:
                     Gamma();
-
                     break;
+
 
             }
 
@@ -289,6 +297,7 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
         private void Idle()
         {
             AI_Timer++;
+
             if (AI_Timer == 120)
             {
                 AI_State = (float)ActionState.Jump;
@@ -298,7 +307,21 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
         }
 
 
+        private void Jumpy()
+        {
+            AI_Timer ++;
 
+
+            if (AI_Timer == 30) {
+                Main.NewText("boss is in second stage");
+                NPC.TargetClosest(true);
+            NPC.velocity = new Vector2 (NPC.direction * 2, -5f);
+            } 
+            else if (NPC.collideX == true || NPC.collideY == true && AI_Timer > 30)
+            {
+                NPC.velocity = new Vector2(0, 0);
+            }
+        }
 
         private void Jump()
         {
@@ -311,9 +334,11 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
                 {
                     Dust.NewDust(NPC.BottomLeft, 40, 10, DustID.Flare, 0, 0, 0, default, 2);
                     Dust.NewDust(NPC.BottomRight, 40, 10, DustID.Flare, 0, 0, 0, default, 2);
+
+
                 }
                 NPC.TargetClosest(true);
-                NPC.velocity = new Vector2(NPC.direction * 2, -10f);
+                NPC.velocity = new Vector2(NPC.direction * 2, -15f);
             }
 
             else if (NPC.collideX == true || NPC.collideY == true && AI_Timer > 60)
@@ -324,10 +349,9 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
                     Dust.NewDust(NPC.BottomRight, 100, 10, DustID.Smoke, 0, 0, 0, default, 2);
 
                 }
-
                 NPC.velocity = new Vector2(0, 0);
-                AI_State = (float)ActionState.Jump2;
                 AI_Timer = 0;
+                AI_State = (float)ActionState.Jump2;
             }
         }
 
@@ -564,6 +588,9 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
                     // This checks if our spawned NPC is indeed the minion, and casts it so we can access its variables
                     minion.ParentIndex = NPC.whoAmI; // Let the minion know who the "parent" is
                 }
+//in here the boss is supposed to loop thru attacks but for some reason it ascends to heaven,can you fix it? tnx
+                AI_State = (int)ActionState.Jump;
+                AI_Timer = 0;
 
             }
         }
