@@ -62,19 +62,13 @@ namespace ProjectInfinity.Content.Items.Weapons.Magic
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            /*position += Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 45f;
-            for (int i = 0; i < 8; i++)
-            {
-                Vector2 vel = Vector2.UnitX.RotatedBy(MathHelper.ToRadians(i * 45)) * (1 + i / 15f) * 6f;
-                Projectile.NewProjectile(source, position.X, position.Y, vel.X, vel.Y, type, damage, knockback, player.whoAmI);
-            }*/
             if(player.altFunctionUse == 2)
             {
-                Projectile.NewProjectile(source,player.position,velocity,ModContent.ProjectileType<TestRay>(),damage,knockback, player.whoAmI);
+                Projectile.NewProjectile(source,Main.MouseWorld,Vector2.Zero,ModContent.ProjectileType<TestRay>(),damage,knockback, player.whoAmI);
             }
             else
             {
-                Projectile.NewProjectile(source, player.position, velocity, ModContent.ProjectileType<DenemeProj>(), damage, knockback, player.whoAmI);
+                Projectile.NewProjectile(source, Main.MouseWorld, Vector2.Zero, ModContent.ProjectileType<DenemeProj>(), damage, knockback, player.whoAmI);
             }
 
             return false;
@@ -103,9 +97,9 @@ namespace ProjectInfinity.Content.Items.Weapons.Magic
             Projectile.ai[0]++;
             if (Projectile.ai[0] == 60)
             {
-                for (int i = 0; i < 24; i++)
+                for (int i = 0; i < 72; i++)
                 {
-                        Vector2 vel = Vector2.UnitX.RotatedBy(MathHelper.ToRadians(i * 15));
+                        Vector2 vel = Vector2.UnitX.RotatedBy(MathHelper.ToRadians(i * 5));
                         vel.Normalize();
                         SpawnRaycast(vel, 5);
                 }
@@ -120,7 +114,7 @@ namespace ProjectInfinity.Content.Items.Weapons.Magic
             {
                 // This checks if our spawned NPC is indeed the minion, and casts it so we can access its variables
                 minion.ParentIndex = Projectile.whoAmI; // Let the minion know who the "parent" is
-                minion.maxDist = 700f;
+                minion.maxDist = 300f;
             }
         }
     }

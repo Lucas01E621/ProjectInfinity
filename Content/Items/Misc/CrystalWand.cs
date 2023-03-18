@@ -42,7 +42,7 @@ namespace ProjectInfinity.Content.Items.Misc
             Item.DamageType = DamageClass.Magic;
             Item.damage = 10;
             Item.shootSpeed = 15;
-            Item.shoot = ModContent.ProjectileType<LaserBase>();
+            Item.shoot = ModContent.ProjectileType<LaserBase1>();
             
         }
         public override bool AltFunctionUse(Player player)
@@ -53,11 +53,11 @@ namespace ProjectInfinity.Content.Items.Misc
         {
             if (player.altFunctionUse == 2)
             {
-                Projectile.NewProjectile(source, Main.MouseWorld, Vector2.Zero, ModContent.ProjectileType<debugproj>(), damage, knockback, player.whoAmI);
+                //Projectile.NewProjectile(source, Main.MouseWorld, Vector2.Zero, ModContent.ProjectileType<debugproj>(), damage, knockback, player.whoAmI);
             }
             else
             {
-                Projectile.NewProjectile(source, Main.MouseWorld, velocity, ModContent.ProjectileType<LaserBase>(), damage, knockback, player.whoAmI);
+                Projectile.NewProjectile(source, Main.MouseWorld, velocity, ModContent.ProjectileType<LaserBase1>(), damage, knockback, player.whoAmI);
             }
 
             return false;
