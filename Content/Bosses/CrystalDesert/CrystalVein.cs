@@ -47,8 +47,8 @@ namespace ProjectInfinity.Content.Bosses.CrystalDesert
         }
         public override void SetDefaults()
         {
-            NPC.height = 50;
-            NPC.width = 50;
+            NPC.height = 64;
+            NPC.width = 96;
             NPC.aiStyle = -1;
             NPC.noGravity = true;
             NPC.damage = 0;
@@ -59,6 +59,8 @@ namespace ProjectInfinity.Content.Bosses.CrystalDesert
         public override void AI()
         {
             if (Despawn()) return;
+            NPC.position.X = (int)NPC.position.X;
+            NPC.position.Y = (int)NPC.position.Y;
         }
         public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
         {

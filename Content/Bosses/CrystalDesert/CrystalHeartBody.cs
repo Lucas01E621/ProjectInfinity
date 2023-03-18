@@ -98,6 +98,9 @@ namespace ProjectInfinity.Content.Bosses.CrystalDesert
                 NPC.TargetClosest();
             }
 
+            NPC.position.X = (int)NPC.position.X;
+            NPC.position.Y = (int)NPC.position.Y;
+
             Player player = Main.player[NPC.target];
             UsefulFunctions.DustRing(NPC.Center, 16 * 30, DustID.Adamantite);
 
