@@ -144,12 +144,12 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
             Fall,
             Gamma,
             Jumpy,
+            Idle2,
         }
 
         public ref float AI_State => ref NPC.ai[0];
         public ref float AI_Timer => ref NPC.ai[1];
         public ref float AI_HoverTime => ref NPC.ai[2];
-
 
 
 
@@ -166,6 +166,8 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
                 NPC.EncourageDespawn(10);
                 return;
             }
+
+            CheckSecondStage();
 
 
             if (SecondStage)
@@ -189,7 +191,6 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
 
 
 
-
         }
 
         private void CheckSecondStage()
@@ -198,6 +199,12 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
             {
                 // No point checking if the NPC is already in its second stage
                 return;
+            }
+
+            if (NPC.GetLifePercent() < 0.5f) {
+                SecondStage = true;
+                NPC.netUpdate = true;
+                Main.NewText("shit");
             }
         }
 
@@ -244,8 +251,8 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
         {
             switch (AI_State)
             {
-                case (float)ActionState.Idle:
-                    Idle();
+                case (float)ActionState.Idle2:
+                    Idle2();
                     break;
                 case (float)ActionState.Jump:
                     Jump();
@@ -306,6 +313,15 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
 
         }
 
+        private void Idle2()
+        {
+            AI_Timer++;
+
+            if (AI_Timer == 1)
+            {
+                Main.NewText("second phase");
+            }
+        }
 
         private void Jumpy()
         {
@@ -334,9 +350,8 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
                 {
                     Dust.NewDust(NPC.BottomLeft, 40, 10, DustID.Flare, 0, 0, 0, default, 2);
                     Dust.NewDust(NPC.BottomRight, 40, 10, DustID.Flare, 0, 0, 0, default, 2);
-
-
                 }
+
                 NPC.TargetClosest(true);
                 NPC.velocity = new Vector2(NPC.direction * 2, -15f);
             }
@@ -519,7 +534,6 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
             Player player = Main.player[NPC.target];
             AI_Timer++;
 
-            NPC.noGravity = true;
 
             AI_HoverTime = Main.rand.NextBool() ? 200 : 100;
 
@@ -588,7 +602,7 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
                     // This checks if our spawned NPC is indeed the minion, and casts it so we can access its variables
                     minion.ParentIndex = NPC.whoAmI; // Let the minion know who the "parent" is
                 }
-//in here the boss is supposed to loop thru attacks but for some reason it ascends to heaven,can you fix it? tnx
+
                 AI_State = (int)ActionState.Jump;
                 AI_Timer = 0;
 
