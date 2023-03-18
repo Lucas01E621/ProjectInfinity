@@ -21,6 +21,7 @@ namespace ProjectInfinity.Content.Tiles.CrystalDesert
             ModTranslation name = CreateMapEntryName();
             AddMapEntry(Color.Gray, name);
             name.SetDefault("");
+            
         }
     }
 }

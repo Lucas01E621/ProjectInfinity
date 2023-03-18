@@ -68,7 +68,7 @@ namespace ProjectInfinity.Content.Tiles
         public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
         {
             Tile tile = Main.tile[i, j];
-            Texture2D texture = ModContent.Request<Texture2D>("bth/Tiles/ArenaDoor").Value;
+            Texture2D texture = ModContent.Request<Texture2D>("ProjectInfinity/Content/Tiles/ArenaDoor").Value;
 
             // If you are using ModTile.SpecialDraw or PostDraw or PreDraw, use this snippet and add zero to all calls to spriteBatch.Draw
             // The reason for this is to accommodate the shift in drawing coordinates that occurs when using the different Lighting mode
