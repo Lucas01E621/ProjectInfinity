@@ -7,13 +7,15 @@ using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ProjectInfinity.Common.Systems;
+using ProjectInfinity.Core;
 
 namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
 {
     [AutoloadBossHead]
     internal class Radioactive_sludge : ModNPC
     {
-
+        public override string Texture => AssetDirectory.Radioactive_sludge + Name;
+        public override string BossHeadTexture => AssetDirectory.Radioactive_sludge + Name + "_Head_Boss";
         public bool SecondStage
         {
             get => NPC.ai[0] == 1f;

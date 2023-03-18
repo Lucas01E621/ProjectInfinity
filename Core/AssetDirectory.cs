@@ -27,6 +27,7 @@ namespace ProjectInfinity.Core
 		public const string Bosses = Assets + "Bosses/";
 		public const string CrystalHeart = Bosses + "CrystalHeart/";
 		public const string PlatformBoss = Bosses + "PlatformBoss/";
+		public const string Radioactive_sludge = Bosses + "Radioactive_sludge/";
 		
 		//Projectiles
 		public const string Projectiles = Assets + "Projectiles/";
