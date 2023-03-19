@@ -136,6 +136,8 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
         private enum ActionState
         {
             Idle,
+            Idle2,
+            Jumpy,
             Jump,
             Jump2,
             Jump3,
@@ -145,8 +147,6 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
             Hover,
             Fall,
             Gamma,
-            Jumpy,
-            Idle2,
         }
 
         public ref float AI_State => ref NPC.ai[0];
@@ -206,7 +206,6 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
             if (NPC.GetLifePercent() < 0.5f) {
                 SecondStage = true;
                 NPC.netUpdate = true;
-                Main.NewText("shit");
             }
         }
 
@@ -256,33 +255,10 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
                 case (float)ActionState.Idle2:
                     Idle2();
                     break;
-                case (float)ActionState.Jump:
-                    Jump();
+                case (float)ActionState.Jumpy:
+                    Jumpy();
                     break;
-                case (float)ActionState.Jump2:
-                    Jump2();
-                    break;
-                case (float)ActionState.Jump3:
-                    Jump3();
-                    break;
-                case (float)ActionState.Jump4:
-                    Jump4();
-                    break;
-                case (float)ActionState.Missile:
-                    Missile();
-                    break;
-                case (float)ActionState.Prehover:
-                    Prehover();
-                    break;
-                case (float)ActionState.Hover:
-                    Hover();
-                    break;
-                case (float)ActionState.Fall:
-                    Fall();
-                    break;
-                case (float)ActionState.Gamma:
-                    Gamma();
-                    break;
+
 
 
             }
@@ -319,26 +295,45 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
         {
             AI_Timer++;
 
-            if (AI_Timer == 1)
+            if (AI_Timer == 120)
             {
                 Main.NewText("second phase");
+
+                AI_State = (float)ActionState.Jumpy;
+                AI_Timer = 0;
             }
+            
         }
+
 
         private void Jumpy()
         {
-            AI_Timer ++;
+            AI_Timer++;
 
-
-            if (AI_Timer == 30) {
-                Main.NewText("boss is in second stage");
-                NPC.TargetClosest(true);
-            NPC.velocity = new Vector2 (NPC.direction * 2, -5f);
-            } 
-            else if (NPC.collideX == true || NPC.collideY == true && AI_Timer > 30)
+            if (AI_Timer == 60)
             {
-                NPC.velocity = new Vector2(0, 0);
+                for (int i = 0; i < 50; i++)
+                {
+                    Dust.NewDust(NPC.BottomLeft, 40, 10, DustID.Flare, 0, 0, 0, default, 2);
+                    Dust.NewDust(NPC.BottomRight, 40, 10, DustID.Flare, 0, 0, 0, default, 2);
+                }
+
+                NPC.TargetClosest(true);
+                NPC.velocity = new Vector2(NPC.direction * 2, -5f);
             }
+
+            else if (NPC.collideX == true || NPC.collideY == true && AI_Timer > 60)
+            {
+                for (int i = 0; i < 50; i++)
+                {
+                    Dust.NewDust(NPC.BottomLeft, 100, 10, DustID.Smoke, 0, 0, 0, default, 2);
+                    Dust.NewDust(NPC.BottomRight, 100, 10, DustID.Smoke, 0, 0, 0, default, 2);
+
+                }
+                NPC.velocity = new Vector2(0, 0);
+                AI_Timer = 0;
+            }
+
         }
 
         private void Jump()
