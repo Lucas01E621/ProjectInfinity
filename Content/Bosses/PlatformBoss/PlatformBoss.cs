@@ -19,7 +19,7 @@ namespace ProjectInfinity.Content.Bosses.PlatformBoss
         {
             NPC.width = 500;
             NPC.height = 500;
-            NPC.lifeMax = 500;
+            NPC.lifeMax = 1000;
             NPC.noGravity = true;
         }
         public override void OnSpawn(IEntitySource source)
