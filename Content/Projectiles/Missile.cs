@@ -131,19 +131,11 @@ namespace ProjectInfinity.Content.Projectiles
                 if (target.active)
                 {
                     float distance = Projectile.Distance(target.Center);
-                    if (distance <= homingMaximumRangeInPixels &&
-                    (
-                        selectedTarget == -1 ||
-                        Projectile.Distance(Main.player[selectedTarget].Center) > distance)
-                    )
+                    if (distance <= homingMaximumRangeInPixels && ( selectedTarget == -1 || Projectile.Distance(Main.player[selectedTarget].Center) > distance) )
                         selectedTarget = i;
                 }
             }
-
             return selectedTarget;
         }
-
     }
-
-
 }

@@ -53,7 +53,7 @@ namespace ProjectInfinity.Content.Bosses.CrystalDesert
             NPC.noGravity = true;
             NPC.damage = 0;
             NPC.defense = 9999;
-            NPC.lifeMax = 100;
+            NPC.lifeMax = 20;
             NPC.knockBackResist = 0;
         }
         public override void AI()

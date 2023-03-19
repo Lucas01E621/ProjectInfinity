@@ -603,6 +603,7 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
                 {
                     // This checks if our spawned NPC is indeed the minion, and casts it so we can access its variables
                     minion.ParentIndex = NPC.whoAmI; // Let the minion know who the "parent" is
+                    minion.player = Main.player[NPC.target];
                 }
 
                 AI_State = (int)ActionState.Jump;

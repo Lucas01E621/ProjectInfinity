@@ -12,62 +12,65 @@ using Terraria.ModLoader;
 
 namespace ProjectInfinity.Content.Projectiles
 {
-    internal class raycastproj1 : ModProjectile
+    internal class CrystalLaser : ModProjectile
     {
-        public override string Texture => AssetDirectory.Projectiles + Name;
-        public float maxDist { get; set; }
-        public TestRay parent { get; set; }
-
+        //laser
+        public LaserCrystal parent { get; set; }
+        public int maxDist = 1000;
+        public int active = 1;
         public float Distance
         {
             get => Projectile.ai[1];
             set => Projectile.ai[1] = value;
         }
         private const float MOVE_DISTANCE = 60f;
+        public override string Texture => AssetDirectory.Projectiles + "raycastproj1";
         public override void SetDefaults()
         {
-            Projectile.friendly = true;
-            Projectile.width = 26;
+            Projectile.hostile = true;
+            Projectile.width = 30;
             Projectile.height = 26;
             Projectile.aiStyle = 0;
-            Projectile.timeLeft = 480;
-            Projectile.penetrate = 1;
+            Projectile.damage = 0;
+            Projectile.timeLeft = 600;
+            Projectile.penetrate = -1;
         }
-
         public override void AI()
         {
             if (!parent.Projectile.active) Projectile.Kill();
-
+            Projectile.velocity = new Vector2(0, 1);
 
             //Main.NewText(checkBox.BottomRight());
-            UpdatePosition();
+            Projectile.position = parent.Projectile.position;
             Projectile.netUpdate = true;
             SetLaserPosition(parent.Projectile);
+
+            if (active > 1) active = 0;
         }
         public override bool PreDraw(ref Color lightColor)
         {
             // We start drawing the laser if we have charged up
-            Vector2 c = parent.Projectile.Center;
-            DrawLaser(Main.spriteBatch, TextureAssets.Projectile[ModContent.ProjectileType<raycastproj1>()].Value, c,
-                Projectile.velocity, 2, -1.57f, 1f, (int)MOVE_DISTANCE);
+            if(active == 1)
+            {
+                Vector2 c = parent.Projectile.Center;
+                DrawLaser(Main.spriteBatch, TextureAssets.Projectile[ModContent.ProjectileType<CrystalLaser>()].Value, c,
+                    Projectile.velocity, 2, -1.57f, 1f, (int)MOVE_DISTANCE);
+            }
             return false;
 
         }
-        private void SetLaserPosition(Projectile proj)
+        public override bool ShouldUpdatePosition() => false;
+        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
-            for (Distance = MOVE_DISTANCE; Distance <= maxDist; Distance += 5f)
-            {
-                var start = proj.Center + Projectile.velocity * Distance;
-                if (!Collision.CanHit(proj.Center, 1, 1, start, 1, 1))
-                {
-                    Distance -= 5f;
-                    break;
-                }
-            }
-        }
-        public void UpdatePosition()
-        {
-            Projectile.Center = parent.Projectile.Center;
+                // We can only collide if we are at max charge, which is when the laser is actually fired
+
+                Player player = Main.player[Projectile.owner];
+                Vector2 unit = Projectile.velocity;
+                float point = 0f;
+                // Run an AABB versus Line check to look for collisions, look up AABB collision first to see how it works
+                // It will look for collisions on the given line using AABB
+                return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), player.Center,
+                    player.Center + unit * Distance, 22, ref point);
         }
         public void DrawLaser(SpriteBatch spriteBatch, Texture2D texture, Vector2 start, Vector2 unit, float step, float rotation = 0f, float scale = 1f, int transDist = 50)
         {
@@ -91,7 +94,18 @@ namespace ProjectInfinity.Content.Projectiles
             spriteBatch.Draw(texture, start + (Distance + step) * unit - Main.screenPosition,
                 new Rectangle(0, 52, 22, 26), Color.White, r, new Vector2(22 * .5f, 26 * .5f), scale, 0, 0);
         }
-        public override bool ShouldUpdatePosition() => false;
+        private void SetLaserPosition(Projectile proj)
+        {
+            for (Distance = MOVE_DISTANCE; Distance <= maxDist; Distance += 5f)
+            {
+                var start = proj.Center + Projectile.velocity * Distance;
+                if (!Collision.CanHit(proj.Center, 1, 1, start, 1, 1))
+                {
+                    Distance -= 5f;
+                    break;
+                }
+            }
+        }
+
     }
 }
-
