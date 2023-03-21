@@ -12,6 +12,7 @@ using ProjectInfinity.Core;
 
 namespace ProjectInfinity.Content.Tiles.CrystalDesert
 {
+    [LegacyName("CrystalSandstoneWall")]
     internal class CrystalSandstoneWall_Tile : ModWall
     {
         public override string Texture => AssetDirectory.CrystalDesert_Tiles + Name;

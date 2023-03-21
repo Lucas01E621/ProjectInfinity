@@ -12,6 +12,7 @@ using Terraria.ObjectData;
 
 namespace ProjectInfinity.Content.Tiles.CrystalDesert
 {
+    [LegacyName("CrystalAltar")]
     internal class CrystalAltar_Tile : ModTile
     {
         public override string Texture => AssetDirectory.CrystalDesert_Tiles + Name;

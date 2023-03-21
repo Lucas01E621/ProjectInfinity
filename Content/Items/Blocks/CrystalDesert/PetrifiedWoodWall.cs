@@ -16,7 +16,7 @@ namespace ProjectInfinity.Content.Items.Blocks.CrystalDesert
         public override string Texture => AssetDirectory.CrystalDesertBlocks + "CrystalSandstone";
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Petrified Wood");
+            DisplayName.SetDefault("Petrified Wood wall");
             Tooltip.SetDefault("Wood block belongs to crystal desert");
 
         }

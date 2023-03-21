@@ -15,6 +15,7 @@ using ProjectInfinity.Content.Items.Blocks.CrystalDesert;
 
 namespace ProjectInfinity.Content.Tiles.CrystalDesert
 {
+    [LegacyName("CrystalSandstone")]
     internal class CrystalSandstone_Tile : ModTile
     {
         public override string Texture => AssetDirectory.CrystalDesert_Tiles + Name;
@@ -25,6 +26,7 @@ namespace ProjectInfinity.Content.Tiles.CrystalDesert
             Main.tileLighted[Type] = true;
             Main.tileBlockLight[Type] = true;
             Main.lightning = 15f;
+            
 
             ModTranslation name = CreateMapEntryName();
             AddMapEntry(Color.DarkOliveGreen, name);
