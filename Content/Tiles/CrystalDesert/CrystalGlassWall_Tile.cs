@@ -13,9 +13,9 @@ using ProjectInfinity.Core;
 
 namespace ProjectInfinity.Content.Tiles.CrystalDesert
 {
-    internal class CrystalGlassWall : ModWall
+    internal class CrystalGlassWall_Tile : ModWall
     {
-        public override string Texture => AssetDirectory.CrystalDesert_Tiles + "CrystalGlassWall";
+        public override string Texture => AssetDirectory.CrystalDesert_Tiles + Name;
         public override void SetStaticDefaults()
         {
             Main.tileMergeDirt[Type] = false;

@@ -16,7 +16,7 @@ namespace ProjectInfinity.Content.NPCs.enemies.CrystalDesert
 {
     internal class CrystalHive : ModNPC
     {
-        public override string Texture => AssetDirectory.CrystalDesert + "CrystalHive";
+        public override string Texture => AssetDirectory.CrystalDesertNPC + "CrystalHive";
         public static int MinionType()
         {
             return ModContent.NPCType<bob>();

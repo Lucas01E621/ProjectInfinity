@@ -7,23 +7,23 @@ using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using Terraria;
 using Terraria.ID;
-using ProjectInfinity.Core;
 using ProjectInfinity.Content.Tiles.CrystalDesert;
+using ProjectInfinity.Core;
 
-namespace ProjectInfinity.Content.Items.Blocks
+namespace ProjectInfinity.Content.Items.Blocks.CrystalDesert
 {
-    internal class CrystalGlassWallItem : ModItem
+    internal class CrystalEntrance : ModItem
     {
-        public override string Texture => AssetDirectory.Blocks + "CrystalGlassWallItem";
+        public override string Texture => AssetDirectory.CrystalDesertBlocks + "CrystalAltar";
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Crystal glass wall item");
+            DisplayName.SetDefault("Crystal entrance");
         }
         public override void SetDefaults()
         {
             Item.width = 16;
             Item.height = 16;
-            Item.createWall = ModContent.WallType<CrystalGlassWall>();
+            Item.createTile = ModContent.TileType<CrystalDesertEntrance_Tile>();
             Item.autoReuse = true;
             Item.consumable = true;
             Item.useAnimation = 10;

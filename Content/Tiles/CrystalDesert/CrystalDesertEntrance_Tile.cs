@@ -12,9 +12,9 @@ using Terraria.ObjectData;
 
 namespace ProjectInfinity.Content.Tiles.CrystalDesert
 {
-    internal class CrystalAltar : ModTile
+    internal class CrystalDesertEntrance_Tile : ModTile
     {
-        public override string Texture => AssetDirectory.CrystalDesert_Tiles + "CrystalAltar";
+        public override string Texture => AssetDirectory.CrystalDesert_Tiles + Name;
         public override void SetStaticDefaults()
         {
             Main.tileSolid[Type] = false;
@@ -22,16 +22,16 @@ namespace ProjectInfinity.Content.Tiles.CrystalDesert
             Main.tileFrameImportant[Type] = true;
 
             TileObjectData.newTile.CopyFrom(TileObjectData.Style6x3);
-            TileObjectData.newTile.Height = 14;
-            TileObjectData.newTile.Width = 11;
-            TileObjectData.newTile.CoordinateHeights = new[] { 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16 };
+            TileObjectData.newTile.Height = 7;
+            TileObjectData.newTile.Width = 7;
+            TileObjectData.newTile.CoordinateHeights = new[] { 16, 16, 16, 16, 16, 16, 16 };
             TileObjectData.newTile.CoordinatePadding = 2;
             TileObjectData.newTile.Origin = new Point16(0,0);
             TileObjectData.addTile(Type);
 
             ModTranslation name = CreateMapEntryName();
             AddMapEntry(Color.Pink, name);
-            name.SetDefault("Crystal Altar");
+            name.SetDefault("Crystal desert entrance");
         }
     }
 }

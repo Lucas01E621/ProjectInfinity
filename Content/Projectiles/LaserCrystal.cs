@@ -39,7 +39,7 @@ namespace ProjectInfinity.Content.Projectiles
         public override void AI()
         {
             Projectile.position = new Vector2(parentTileX, parentTileY) * 16;
-            if (Main.tile[parentTileX,parentTileY].HasTile && Main.tile[parentTileX, parentTileY].TileType == ModContent.TileType<CrystalLaserTile>())
+            if (Main.tile[parentTileX,parentTileY].HasTile && Main.tile[parentTileX, parentTileY].TileType == ModContent.TileType<CrystalLaser_Tile>())
             {
                 Projectile.timeLeft = 2;
             }else

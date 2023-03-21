@@ -7,23 +7,23 @@ using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using Terraria;
 using Terraria.ID;
-using ProjectInfinity.Content.Tiles.CrystalDesert;
+using ProjectInfinity.Content.Tiles;
 using ProjectInfinity.Core;
 
 namespace ProjectInfinity.Content.Items.Blocks
 {
-    internal class CrystalLaserBlock : ModItem
+    internal class AsteroidBlock : ModItem
     {
-        public override string Texture => AssetDirectory.Blocks + "CrystalSandstoneBlock";
+        public override string Texture => AssetDirectory.Blocks + Name;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Crystal laser");
+            DisplayName.SetDefault("Asteriod Block");
         }
         public override void SetDefaults()
         {
             Item.width = 16;
             Item.height = 16;
-            Item.createTile = ModContent.TileType<CrystalLaserTile>();
+            Item.createTile = ModContent.TileType<AsteroidBlock_Tile>();
             Item.autoReuse = true;
             Item.consumable = true;
             Item.useAnimation = 10;

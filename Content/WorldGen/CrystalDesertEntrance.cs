@@ -22,8 +22,8 @@ namespace ProjectInfinity.Content.WorldGen
 
             int entranceHeight = 70;
             int entranceWidth = 200;
-            ValidGround = new int[] { instance.Find<ModTile>("CrystalSandstone").Type};
-            ValidDesertGround = new int[] { instance.Find<ModTile>("CrystalSandstone").Type, TileID.Sandstone, TileID.CorruptSandstone, TileID.CrimsonSandstone, TileID.HallowSandstone, TileID.HardenedSand, TileID.FossilOre };
+            ValidGround = new int[] { instance.Find<ModTile>("CrystalSandstone_Tile").Type};
+            ValidDesertGround = new int[] { instance.Find<ModTile>("CrystalSandstone_Tile").Type, TileID.Sandstone, TileID.CorruptSandstone, TileID.CrimsonSandstone, TileID.HallowSandstone, TileID.HardenedSand, TileID.FossilOre };
 
 
         }

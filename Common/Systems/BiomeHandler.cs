@@ -17,8 +17,8 @@ namespace ProjectInfinity.Common.Systems
 
         public override void TileCountsAvailable(ReadOnlySpan<int> tileCounts)
         {
-            CrystanSandstoneBlockCount = tileCounts[ModContent.TileType<CrystalSandstone>()];
-			AsteriodBlockCount = tileCounts[ModContent.TileType<AsteroidBlock>()];
+            CrystanSandstoneBlockCount = tileCounts[ModContent.TileType<CrystalSandstone_Tile>()];
+			AsteriodBlockCount = tileCounts[ModContent.TileType<AsteroidBlock_Tile>()];
         }
     }
 }

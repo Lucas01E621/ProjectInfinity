@@ -10,14 +10,14 @@ using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ObjectData;
-using ProjectInfinity.Content.Items.Blocks;
 using ProjectInfinity.Core;
+using ProjectInfinity.Content.Items.Blocks.CrystalDesert;
 
-namespace ProjectInfinity.Content.Tiles
+namespace ProjectInfinity.Content.Tiles.CrystalDesert
 {
-    internal class AsteroidBlock : ModTile
+    internal class CrystalSandstone_Tile : ModTile
     {
-        public override string Texture => AssetDirectory.AsteroidField_Tiles + Name;
+        public override string Texture => AssetDirectory.CrystalDesert_Tiles + Name;
         public override void SetStaticDefaults()
         {
             Main.tileSolid[Type] = true;
@@ -32,7 +32,7 @@ namespace ProjectInfinity.Content.Tiles
         }
         public override bool Drop(int i, int j)
         {
-            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<CrystalSandstoneBlock>());
+            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<CrystalSandstone>());
             return base.Drop(i, j);
         }
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

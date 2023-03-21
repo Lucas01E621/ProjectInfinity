@@ -12,9 +12,9 @@ using ProjectInfinity.Core;
 
 namespace ProjectInfinity.Content.Tiles.CrystalDesert
 {
-    internal class CrystalSandstoneWall : ModWall
+    internal class CrystalSandstoneWall_Tile : ModWall
     {
-        public override string Texture => AssetDirectory.CrystalDesert_Tiles + "CrystalSandstoneWall";
+        public override string Texture => AssetDirectory.CrystalDesert_Tiles + Name;
         public override void SetStaticDefaults()
         {
             Main.tileMergeDirt[Type] = true;

@@ -12,18 +12,18 @@ using ProjectInfinity.Core;
 
 namespace ProjectInfinity.Content.Items.Blocks
 {
-    internal class AsteroidBlockItem : ModItem
+    internal class ArenaDoor : ModItem
     {
-        public override string Texture => AssetDirectory.Blocks + "AsteroidBlockItem";
+        public override string Texture => AssetDirectory.Blocks + Name;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Asteriod Block");
+            DisplayName.SetDefault("Arena door");
         }
         public override void SetDefaults()
         {
             Item.width = 16;
             Item.height = 16;
-            Item.createTile = ModContent.TileType<AsteroidBlock>();
+            Item.createTile = ModContent.TileType<ArenaDoor_Tile>();
             Item.autoReuse = true;
             Item.consumable = true;
             Item.useAnimation = 10;

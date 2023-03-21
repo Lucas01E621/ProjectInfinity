@@ -13,7 +13,7 @@ using Terraria.ObjectData;
 
 namespace ProjectInfinity.Content.Tiles
 {
-    internal class ArenaDoor : ModTile
+    internal class ArenaDoor_Tile : ModTile
     {
         public override string Texture => AssetDirectory.CrystalDesert_Tiles + Name;
         public bool state;

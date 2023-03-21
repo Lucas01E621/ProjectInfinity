@@ -14,7 +14,7 @@ namespace ProjectInfinity.Content.Bosses.CrystalDesert
 {
     public class CrystalVein : ModNPC
     {
-        public override string Texture => AssetDirectory.CrystalDesert + "CrystalVein";
+        public override string Texture => AssetDirectory.CrystalHeart + "CrystalVein";
 
         public bool downed = false;
         public int ParentIndex

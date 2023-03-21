@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using ProjectInfinity.Content.Items.Blocks;
+using ProjectInfinity.Content.Items.Blocks.CrystalDesert;
 using ProjectInfinity.Core;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ using Terraria.ModLoader;
 
 namespace ProjectInfinity.Content.Tiles.CrystalDesert
 {
-    internal class PetrifiedWood : ModTile 
+    internal class PetrifiedWood_Tile : ModTile 
     {
         public override string Texture => AssetDirectory.CrystalDesert_Tiles + Name;
         public override void SetStaticDefaults()
@@ -30,7 +30,7 @@ namespace ProjectInfinity.Content.Tiles.CrystalDesert
         }
         public override bool Drop(int i, int j)
         {
-            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<PetrifiedWoodBlock>());
+            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<PetrifiedWood>());
             return base.Drop(i, j);
         }
     }

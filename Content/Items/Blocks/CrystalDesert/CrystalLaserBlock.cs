@@ -1,29 +1,29 @@
-﻿using ProjectInfinity.Content.Tiles.CrystalDesert;
-using ProjectInfinity.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Terraria;
+using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
+using Terraria;
 using Terraria.ID;
-using ProjectInfinity.Content.Tiles;
+using ProjectInfinity.Content.Tiles.CrystalDesert;
+using ProjectInfinity.Core;
 
-namespace ProjectInfinity.Content.Items.Blocks
+namespace ProjectInfinity.Content.Items.Blocks.CrystalDesert
 {
-    internal class InvisibleWallItem : ModItem
+    internal class CrystalLaser : ModItem
     {
-        public override string Texture => AssetDirectory.Blocks + "InvisibleWallItem";
+        public override string Texture => AssetDirectory.CrystalDesertBlocks + "CrystalSandstone";
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Invisible wall item");
+            DisplayName.SetDefault("Crystal laser");
         }
         public override void SetDefaults()
         {
             Item.width = 16;
             Item.height = 16;
-            Item.createWall = ModContent.WallType<InvisibleWall>();
+            Item.createTile = ModContent.TileType<CrystalLaser_Tile>();
             Item.autoReuse = true;
             Item.consumable = true;
             Item.useAnimation = 10;

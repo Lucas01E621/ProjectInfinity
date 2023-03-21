@@ -14,6 +14,7 @@ namespace ProjectInfinity.Core
 		public const string Accessories = Items + "Accessories/";
 		public const string Bars = Items + "Bars/";
 		public const string Blocks = Items + "Blocks/";
+		public const string CrystalDesertBlocks = Blocks + "CrystalDesert/";
 		public const string Magic = Items + "Magic/";
 		public const string Melee = Items + "Melee/";
 		public const string Misc = Items + "Misc/";
@@ -23,7 +24,7 @@ namespace ProjectInfinity.Core
 		
 		//NPCs
 		public const string NPCs = Assets + "NPCs/";
-		public const string CrystalDesert = NPCs + "CrystalDesert/";
+		public const string CrystalDesertNPC = NPCs + "CrystalDesert/";
 		public const string Bosses = Assets + "Bosses/";
 		public const string CrystalHeart = Bosses + "CrystalHeart/";
 		public const string PlatformBoss = Bosses + "PlatformBoss/";

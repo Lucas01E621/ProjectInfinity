@@ -7,23 +7,23 @@ using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using Terraria;
 using Terraria.ID;
-using ProjectInfinity.Content.Tiles;
+using ProjectInfinity.Content.Tiles.CrystalDesert;
 using ProjectInfinity.Core;
 
-namespace ProjectInfinity.Content.Items.Blocks
+namespace ProjectInfinity.Content.Items.Blocks.CrystalDesert
 {
-    internal class ArenaDoorItem : ModItem
+    internal class CrystalAltar : ModItem
     {
-        public override string Texture => AssetDirectory.Blocks + "ArenaDoorItem";
+        public override string Texture => AssetDirectory.CrystalDesertBlocks + Name;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Arena door");
+            DisplayName.SetDefault("Crystal altar");
         }
         public override void SetDefaults()
         {
             Item.width = 16;
             Item.height = 16;
-            Item.createTile = ModContent.TileType<ArenaDoor>();
+            Item.createTile = ModContent.TileType<CrystalAltar_Tile>();
             Item.autoReuse = true;
             Item.consumable = true;
             Item.useAnimation = 10;

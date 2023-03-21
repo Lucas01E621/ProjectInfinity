@@ -10,20 +10,20 @@ using Terraria.ID;
 using ProjectInfinity.Content.Tiles.CrystalDesert;
 using ProjectInfinity.Core;
 
-namespace ProjectInfinity.Content.Items.Blocks
+namespace ProjectInfinity.Content.Items.Blocks.CrystalDesert
 {
-    internal class CrystalEntrance : ModItem
+    internal class CrystalSandstone : ModItem
     {
-        public override string Texture => AssetDirectory.Blocks + "CrystalAltarItem";
+        public override string Texture => AssetDirectory.CrystalDesertBlocks + Name;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Crystal entrance");
+            DisplayName.SetDefault("Crystal sandstone");
         }
         public override void SetDefaults()
         {
             Item.width = 16;
             Item.height = 16;
-            Item.createTile = ModContent.TileType<CrystalDesertEntrance>();
+            Item.createTile = ModContent.TileType<CrystalSandstone_Tile>();
             Item.autoReuse = true;
             Item.consumable = true;
             Item.useAnimation = 10;

@@ -10,9 +10,9 @@ using Terraria.ModLoader;
 
 namespace ProjectInfinity.Content.Tiles
 {
-    internal class InvisibleWall : ModWall
+    internal class InvisibleWall_Tile : ModWall
     {
-        public override string Texture => AssetDirectory.Tiles + "InvisibleWall";
+        public override string Texture => AssetDirectory.Tiles + Name;
         public override void SetStaticDefaults()
         {
             Main.tileMergeDirt[Type] = false;

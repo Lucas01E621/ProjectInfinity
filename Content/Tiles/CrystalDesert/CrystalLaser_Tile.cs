@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using ProjectInfinity.Content.Items.Blocks;
+using ProjectInfinity.Content.Items.Blocks.CrystalDesert;
 using ProjectInfinity.Content.Projectiles;
 using ProjectInfinity.Core;
 using Terraria;
@@ -9,9 +9,9 @@ using Terraria.ModLoader;
 
 namespace ProjectInfinity.Content.Tiles.CrystalDesert
 {
-    internal class CrystalLaserTile : ModTile
+    internal class CrystalLaser_Tile : ModTile
     {
-        public override string Texture => AssetDirectory.CrystalDesert_Tiles + "CrystalSandstone";
+        public override string Texture => AssetDirectory.CrystalDesert_Tiles + "CrystalSandstone_Tile";
         public override void SetStaticDefaults()
         {
             Main.tileSolid[Type] = false;
@@ -26,7 +26,7 @@ namespace ProjectInfinity.Content.Tiles.CrystalDesert
         }
         public override bool Drop(int i, int j)
         {
-            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<CrystalSandstoneBlock>());
+            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<CrystalSandstone>());
             return base.Drop(i, j);
         }
         public override void PlaceInWorld(int i, int j, Item item)
