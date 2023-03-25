@@ -34,17 +34,6 @@ namespace ProjectInfinity.Content.Items.Weapons.Melee
             Item.autoReuse = true;
         }
 
-        public override bool UseItem(Player player)
-        {
-            Vector2 position = player.Center;
-            Vector2 cursorPosition = Main.MouseWorld;
-            Vector2 direction = cursorPosition - position;
-            direction.Normalize();
-            float speed = 16f;
-            int damage = Item.damage;
-            float knockback = Item.knockBack;
-            Projectile.NewProjectile(position.X, position.Y, direction.X * speed, direction.Y * speed, ProjectileID.WoodenArrowFriendly, damage, knockback, player.whoAmI);
-            return true;
-        }
+
     }
 }
