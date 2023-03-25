@@ -17,5 +17,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Dye\" />
+    <Folder Include="Content\Items\Weapons\Magic\CrystalDesert\" />
+    <Folder Include="Content\Items\Weapons\Summoner\CrystalDesert\" />
   </ItemGroup>
 </Project>

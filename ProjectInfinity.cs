@@ -11,6 +11,7 @@ using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 using ProjectInfinity.Content.Items.Dye;
+using ReLogic.Content;
 
 namespace ProjectInfinity
 {
@@ -41,6 +42,7 @@ namespace ProjectInfinity
                 loadCache[k].Load();
                 SetLoadingText("Loading " + loadCache[k].GetType().Name);
             }
+            LoadFX();
         }
 		public override void Unload()
 		{
@@ -61,6 +63,7 @@ namespace ProjectInfinity
         }
         public void LoadFX()
         {
+            Filters.Scene["testscreenshader"] = new Filter(new ScreenShaderData(new Ref<Effect>(this.Assets.Request<Effect>("Effects/testscreenshader", AssetRequestMode.ImmediateLoad).Value), "sstest"), EffectPriority.Medium);
         }
     }
 }
