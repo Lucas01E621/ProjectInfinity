@@ -8,9 +8,11 @@ Mods: {
 
 		NPCs: {
 			CrystalHeartBody.DisplayName: Crystal Heart
+			CrystalVein.DisplayName: Crystal Vein
+			PlatformBoss.DisplayName: Platform Boss
+			Radioactive_sludge.DisplayName: Radioactive Sludge
 			bob.DisplayName: bob
 			CrystalHive.DisplayName: Crystal Hive
-			CrystalVein.DisplayName: Crystal Vein
 		}
 
 		Buffs: {
@@ -52,19 +54,63 @@ Mods: {
 			}
 
 			examplebar.DisplayName: Example bar
-			ArenaDoorItem.DisplayName: Arena door
-			AsteroidBlockItem.DisplayName: Asteriod Block
-			CrystalAltarItem.DisplayName: Crystal altar
-			CrystalGlassWallItem.DisplayName: Crystal glass wall item
-			CrystalSandstoneBlock.DisplayName: Crystal sandstone
-			CrystalSandstoneBlockWallItem.DisplayName: Crystal sandstone wall item
+			ArenaDoor.DisplayName: Arena door
+			AsteroidBlock.DisplayName: Asteriod Block
+			CrystalAltar.DisplayName: Crystal altar
+			CrystalEntrance.DisplayName: Crystal entrance
+			CrystalGlassWall.DisplayName: Crystal glass wall item
+			CrystalLaser.DisplayName: Crystal laser
+			CrystalSandstone.DisplayName: Crystal sandstone
+			CrystalSandstoneWall.DisplayName: Crystal sandstone wall item
+
+			PetrifiedWood: {
+				DisplayName: Petrified Wood
+				Tooltip: Wood block belongs to crystal desert
+			}
+
+			PetrifiedWoodChest: {
+				DisplayName: Petrified wood chest
+				Tooltip: Wood block belongs to crystal desert
+			}
+
+			PetrifiedWoodWall: {
+				DisplayName: Petrified Wood wall
+				Tooltip: Wood block belongs to crystal desert
+			}
+
 			exampleore.DisplayName: Example ore
-			InvisibleWallItem.DisplayName: Invisible wall item
+			InvisibleWall.DisplayName: Invisible wall item
+			TestDye.DisplayName: Test Dye
 			CrystalWand.DisplayName: Crystal Wand
+			DebugStick.DisplayName: Debug Stick
+
+			Radioactive_barrel: {
+				DisplayName: Radioactive Barrel
+				Tooltip: It attracts an abomination
+			}
+
+			ScreenShaderDebug.DisplayName: Screen Shader debug
+
+			ShardPiece: {
+				DisplayName: Shard Piece
+				Tooltip: A piece of a shard
+			}
+
 			SubworldItem.DisplayName: Subworld Item
 			PHwand.DisplayName: placeholder wand
 			ProjDeneme.DisplayName: deneme
+
+			ShardBlade: {
+				DisplayName: Shard Blade
+				Tooltip: A strong power that used to rule to crystal desert once upon a time...
+			}
+
 			SoulSword.DisplayName: soulsword
+
+			Test: {
+				DisplayName: Test
+				Tooltip: i use this to punish bosses for not following my orders,YOU SHALL DIE INFERIOR BEING.
+			}
 
 			CrystalGun: {
 				DisplayName: Crystal gun
@@ -94,10 +140,26 @@ Mods: {
 			PrismProj.DisplayName: Crystalprism
 			CrystalHiveProj.DisplayName: Crystal Hive Proj
 			UpwardsBoost.DisplayName: Upwards Boost
+			LaserBase1.DisplayName: Laser Base1
+			CrystalLaser.DisplayName: Crystal Laser
+			debugproj.DisplayName: debugproj
+			Gamma_ray.DisplayName: Gamma Ray
+			LaserCrystal.DisplayName: Laser Crystal
+			Missile.DisplayName: Missile
+			raycastproj.DisplayName: raycastproj
+			raycastproj1.DisplayName: raycastproj1
+			TestRay.DisplayName: Test Ray
 		}
 
 		Tiles: {
-			CrystalAltar.MapEntry: Crystal Altar
+			PetrifiedWoodChest_Tile: {
+				ContainerName: Petrified wood Chest
+				MapEntry: Petrified wood Chest
+			}
+
+			CrystalAltar_Tile.MapEntry: Crystal Altar
+			CrystalDesertEntrance_Tile.MapEntry: Crystal desert entrance
+			PetrifiedWoodChest_Tile_Locked.MapEntry: Petrified wood Chest
 			exampletile.MapEntry: Example Tile
 		}
 	}
