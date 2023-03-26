@@ -16,7 +16,7 @@ using Terraria.ModLoader;
 
 namespace ProjectInfinity.Common.Players
 {
-    public class MPlayer : ModPlayer
+    public partial class MPlayer : ModPlayer
     {
         public bool lifeRegenDebuff;
         public bool CrystalHeart;
@@ -61,7 +61,7 @@ namespace ProjectInfinity.Common.Players
         public override void PreUpdateMovement()
         {
             #region upwards boost
-            if (UsefulFunctions.IsGrounded(Player) && hasUpwardsBoostBuff)//fix this
+            if (UsefulFunctions.IsGrounded(Player) && hasUpwardsBoostBuff)
             {
                 canDoubleJump = true;
                 waitDoubleJump = true;
@@ -76,7 +76,7 @@ namespace ProjectInfinity.Common.Players
                     canDoubleJump = false;
                     Player.ClearBuff(ModContent.BuffType<UpwardsBoostBuff>());
                     //sound and dust
-                    SoundEngine.PlaySound(new SoundStyle("ProjectInfinity/Assets/Sounds/scream"), Player.position);
+                    SoundEngine.PlaySound(new SoundStyle("ProjectInfinity/Sounds/scream"), Player.position);
                     for (int i = 0; i < 20; i++)
                         Dust.NewDust(Player.Bottom, 2, 2, Terraria.ID.DustID.TreasureSparkle);
                     
