@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using ProjectInfinity.Content.Items.Misc;
 using ProjectInfinity.Core;
 using System;
 using System.Collections.Generic;
@@ -60,6 +61,13 @@ namespace ProjectInfinity.Content.Items.Weapons.Ranged
                 Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<CrystalGunProj>(), damage, knockback, player.whoAmI);
             }
             return false;
+        }
+        public override void AddRecipes()
+        {
+            Recipe.Create(ModContent.ItemType<CrystalGun>())
+                .AddIngredient<ShardPiece>(5)
+                .AddTile(TileID.Anvils)
+                .Register();
         }
     }
     internal class CrystalGunProj : ModProjectile
