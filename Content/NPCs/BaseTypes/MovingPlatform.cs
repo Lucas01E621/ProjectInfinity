@@ -40,7 +40,6 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("");
         }
 
         public virtual void SafeSendExtraAI() { }

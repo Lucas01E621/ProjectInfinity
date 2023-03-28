@@ -20,8 +20,6 @@ namespace ProjectInfinity.Content.Items.Weapons.Ranged
         public override string Texture => AssetDirectory.Ranged + "CrystalGun";
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Crystal gun");
-            Tooltip.SetDefault("'A giant crystal cannon forged in the crystal desert'\nit somewhat look similar");
         }
         public override void SetDefaults()
         {
@@ -75,7 +73,6 @@ namespace ProjectInfinity.Content.Items.Weapons.Ranged
         public override string Texture => AssetDirectory.Projectiles + "CrystalGunProj";
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Crystal laser");
         }
         public override void SetDefaults()
         {
@@ -111,7 +108,6 @@ namespace ProjectInfinity.Content.Items.Weapons.Ranged
         public override string Texture => AssetDirectory.Projectiles + "PrismProj";
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Crystalprism");
         }
         public override void SetDefaults()
         {
@@ -134,7 +130,6 @@ namespace ProjectInfinity.Content.Items.Weapons.Ranged
         public override string Texture => AssetDirectory.Projectiles + "PrismParticleProj";
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Crystalprism");
         }
         public override void SetDefaults()
         {

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -34,9 +35,8 @@ namespace ProjectInfinity.Content.Tiles
             TileObjectData.newTile.Origin = new Point16(0,0);
             TileObjectData.addTile(Type);
 
-            ModTranslation name = CreateMapEntryName();
+            LocalizedText name = CreateMapEntryName();
             AddMapEntry(Color.Gray, name);
-            name.SetDefault("");
         }
         public override bool RightClick(int i, int j)
         {

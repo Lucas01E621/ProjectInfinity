@@ -14,11 +14,9 @@ namespace ProjectInfinity.Content.Buffs
 {
     internal class UpwardsBoostBuff : ModBuff
     {
-        public override string Texture => AssetDirectory.Buffs + "UpwardsBoostBuff";
+        public override string Texture => AssetDirectory.Buffs + Name;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("u boost");
-            Description.SetDefault("Your soul is slowly decaying");
             Main.debuff[Type] = true;
             Main.pvpBuff[Type] = true;
             Main.buffNoSave[Type] = false;

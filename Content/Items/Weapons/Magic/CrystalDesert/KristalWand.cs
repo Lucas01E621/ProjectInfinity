@@ -19,8 +19,6 @@ namespace ProjectInfinity.Content.Items.Weapons.Magic.CrystalDesert
         public override string Texture => AssetDirectory.Misc + "CrystalWand";
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Kristal Wand");
-            Tooltip.SetDefault("Right-click to shoot a Kristal projectile straight up");
         }
 
         public override void SetDefaults()

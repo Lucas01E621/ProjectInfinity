@@ -14,11 +14,7 @@ namespace ProjectInfinity.Content.Items.Blocks
 {
     internal class exampleore : ModItem
     {
-        public override string Texture => AssetDirectory.Blocks + "exampleore";
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Example ore");
-        }
+        public override string Texture => AssetDirectory.Blocks + Name;
         public override void SetDefaults()
         {
             Item.width = 16;

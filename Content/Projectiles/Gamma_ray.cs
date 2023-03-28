@@ -27,7 +27,6 @@ namespace ProjectInfinity.Content.Projectiles
         public override string Texture => AssetDirectory.Projectiles + Name;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Gamma Ray");
         }
         public override void SetDefaults()
         {

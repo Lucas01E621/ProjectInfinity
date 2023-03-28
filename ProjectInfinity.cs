@@ -19,9 +19,15 @@ namespace ProjectInfinity
 	{
         private List<IOrderedLoadable> loadCache;
         public static ProjectInfinity Instance { get; set; }
+		
+		public ProjectInfinity()
+		{
+			Instance = this;
+		}
+		
 		public override void Load()
 		{
-            Instance = this;
+            
 			Logger.Debug("Modname is:" +this.Name);
 
             loadCache = new List<IOrderedLoadable>();
@@ -46,13 +52,16 @@ namespace ProjectInfinity
         }
 		public override void Unload()
 		{
-			Instance = null;
             foreach (IOrderedLoadable loadable in loadCache)
             {
                 loadable.Unload();
             }
-
             loadCache = null;
+
+            if (!Main.dedServ)
+            {
+                Instance = null;
+            }
         }
         public static void SetLoadingText(string text)
         {

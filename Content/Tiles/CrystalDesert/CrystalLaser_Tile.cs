@@ -5,6 +5,7 @@ using ProjectInfinity.Core;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace ProjectInfinity.Content.Tiles.CrystalDesert
@@ -20,14 +21,8 @@ namespace ProjectInfinity.Content.Tiles.CrystalDesert
             Main.tileBlockLight[Type] = true;
             Main.lightning = 15f;
 
-            ModTranslation name = CreateMapEntryName();
+            LocalizedText name = CreateMapEntryName();
             AddMapEntry(Color.DarkOliveGreen, name);
-            name.SetDefault("");
-        }
-        public override bool Drop(int i, int j)
-        {
-            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<CrystalSandstone>());
-            return base.Drop(i, j);
         }
         public override void PlaceInWorld(int i, int j, Item item)
         {

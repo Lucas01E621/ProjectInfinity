@@ -17,7 +17,7 @@ namespace ProjectInfinity.Content.Items.Blocks
         public override string Texture => AssetDirectory.Blocks + Name;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Arena door");
+            
         }
         public override void SetDefaults()
         {

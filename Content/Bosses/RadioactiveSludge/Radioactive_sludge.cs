@@ -24,7 +24,6 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Radioactive Sludge");
             Main.npcFrameCount[Type] = 6;
             NPCID.Sets.BossBestiaryPriority.Add(Type);
 

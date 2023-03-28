@@ -16,7 +16,6 @@ namespace ProjectInfinity.Content.Projectiles.BaseProjectiles
         public override string Texture => AssetDirectory.Projectiles + "PrismProj";
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Kristal");
         }
 
         public override void SetDefaults()

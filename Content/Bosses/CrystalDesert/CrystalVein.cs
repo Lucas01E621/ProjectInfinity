@@ -43,7 +43,7 @@ namespace ProjectInfinity.Content.Bosses.CrystalDesert
         }
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Crystal Vein");
+
         }
         public override void SetDefaults()
         {
@@ -62,7 +62,7 @@ namespace ProjectInfinity.Content.Bosses.CrystalDesert
             NPC.position.X = (int)NPC.position.X;
             NPC.position.Y = (int)NPC.position.Y;
         }
-        public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
+        public override void OnHitByProjectile(Projectile projectile, NPC.HitInfo hit, int damageDone)
         {
             if (NPC.life < 2)
             {

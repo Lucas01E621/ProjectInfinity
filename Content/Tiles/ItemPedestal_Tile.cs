@@ -22,25 +22,6 @@ namespace ProjectInfinity.Content.Tiles
     internal class ItemPedestal_Tile : ModTile
     {
         public override string Texture => AssetDirectory.CrystalDesert_Tiles + "CrystalAltar_Tile";
-        /*public override void SetStaticDefaults()
-        {
-            Main.tileSolid[Type] = false;
-            Main.tileMergeDirt[Type] = false;
-            Main.tileFrameImportant[Type] = true;
-
-            TileObjectData.newTile.CopyFrom(TileObjectData.Style6x3);
-            TileObjectData.newTile.Height = 14;
-            TileObjectData.newTile.Width = 11;
-            TileObjectData.newTile.CoordinateHeights = new[] { 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16 };
-            TileObjectData.newTile.CoordinatePadding = 2;
-            TileObjectData.newTile.Origin = new Point16(0, 0);
-            TileObjectData.addTile(Type);
-
-            ModTranslation name = CreateMapEntryName();
-            AddMapEntry(Color.Pink, name);
-            name.SetDefault("itempedestal");
-        }*/
-        
         public override void SetStaticDefaults()
         {
             Main.tileSolid[Type] = false;
@@ -59,9 +40,8 @@ namespace ProjectInfinity.Content.Tiles
 
             TileObjectData.addTile(Type);
 
-            ModTranslation name = CreateMapEntryName();
+            LocalizedText name = CreateMapEntryName();
             AddMapEntry(Color.Pink, name);
-            name.SetDefault("Crystal Altar");
         }
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
@@ -83,23 +63,24 @@ namespace ProjectInfinity.Content.Tiles
         {
             Player player = Main.LocalPlayer;
 
-            bool holdingItem = !player.HeldItem.IsAir;
+            
 
             Main.LocalPlayer.chest = -1;
             Main.mouseRightRelease = false;
+
             Item chosenItem = Main.mouseItem.IsAir ? player.HeldItem : Main.mouseItem;
+            bool holdingItem = !chosenItem.IsAir;
 
             var origin = TileObjectData.GetTileData(this.Type, 0).Origin;
             int offsetX = Main.tile[i, j].TileFrameX / 18;
             int offsetY = Main.tile[i, j].TileFrameY / 18;
             ItemPedestal_TileEntity PedestalEntity = (TileEntity.ByPosition[new Point16(i - offsetX + origin.X, j - offsetY + origin.Y)] as ItemPedestal_TileEntity);
 
-            if (holdingItem && !PedestalEntity.HasStoredItem() || !Main.mouseItem.IsAir)
+            if (holdingItem && !PedestalEntity.HasStoredItem())
             {
                 PedestalEntity.StoreItem(chosenItem.type);
                 chosenItem.stack--;
             }
-
             if (!holdingItem && PedestalEntity.HasStoredItem())
             {
                 int index = Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 16, PedestalEntity.CheckItem());
@@ -132,8 +113,6 @@ namespace ProjectInfinity.Content.Tiles
                 float worthless = 0f;
                 spriteBatch.Draw(texture,drawPosition, sourceRect, lightColor, rotation, originn, scale, spriteEffects, worthless);
             }
-            
         }
-        
     }
 }

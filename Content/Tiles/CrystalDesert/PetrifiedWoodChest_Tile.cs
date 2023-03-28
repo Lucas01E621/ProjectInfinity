@@ -31,17 +31,12 @@ namespace ProjectInfinity.Content.Tiles.CrystalDesert
             TileID.Sets.DisableSmartCursor[Type] = true;
 
             AdjTiles = new int[] { TileID.Containers };
-            ChestDrop = ModContent.ItemType<PetrifiedWoodChest>();
+            ItemDrop = ModContent.ItemType<PetrifiedWoodChest>();
 
             // Names
-            ContainerName.SetDefault("Petrified wood Chest");
 
-            ModTranslation name = CreateMapEntryName();
-            name.SetDefault("Petrified wood Chest");
+            LocalizedText name = CreateMapEntryName();
             AddMapEntry(new Color(200, 200, 200), name, MapChestName);
-
-            name = CreateMapEntryName(Name + "_Locked"); // With multiple map entries, you need unique translation keys.
-            name.SetDefault("Petrified wood Chest");
             AddMapEntry(new Color(0, 141, 63), name, MapChestName);
 
             // Placement
@@ -58,7 +53,7 @@ namespace ProjectInfinity.Content.Tiles.CrystalDesert
         }
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
-            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, ChestDrop);
+            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, ItemDrop);
             Chest.DestroyChest(i, j);
         }
         public static string MapChestName(string name, int i, int j)
@@ -184,7 +179,7 @@ namespace ProjectInfinity.Content.Tiles.CrystalDesert
             }
             else
             {
-                string defaultName = TileLoader.ContainerName(tile.TileType); // This gets the ContainerName text for the currently selected language
+                string defaultName = TileLoader.DefaultContainerName(tile.TileType, tile.TileFrameX, tile.TileFrameY)/* tModPorter Note: new method takes in FrameX and FrameY */; // This gets the ContainerName text for the currently selected language
                 player.cursorItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : defaultName;
                 if (player.cursorItemIconText == defaultName)
                 {

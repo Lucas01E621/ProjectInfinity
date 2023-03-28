@@ -17,7 +17,7 @@ namespace ProjectInfinity.Content.Items.Blocks.CrystalDesert
         public override string Texture => AssetDirectory.CrystalDesertBlocks + Name;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Crystal altar");
+            
         }
         public override void SetDefaults()
         {

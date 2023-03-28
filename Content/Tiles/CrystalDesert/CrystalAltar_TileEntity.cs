@@ -1,33 +1,36 @@
-﻿using System;
+﻿using ProjectInfinity.Content.Tiles.CrystalDesert;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.IO;
+using Terraria.Audio;
+using Terraria.ObjectData;
 
 namespace ProjectInfinity.Content.Tiles
 {
-    internal class ItemPedestal_TileEntity : ModTileEntity
+    internal class CrystalAltar_TileEntity : ModTileEntity
     {
         public override bool IsTileValidForEntity(int i, int j)
         {
             Tile tile = Main.tile[i, j];
             //The MyTile class is shown later
-            return tile.TileType == ModContent.TileType<ItemPedestal_Tile>() && tile.HasTile;
+            return tile.TileType == ModContent.TileType<CrystalAltar_Tile>() && tile.HasTile;
         }
         public override int Hook_AfterPlacement(int i, int j, int type, int style, int direction, int alternate)
         {
             if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 //Sync the entire multitile's area.  Modify "width" and "height" to the size of your multitile in tiles
-                int width = 2;
-                int height = 2;
+                int width = 11;
+                int height = 14;
                 NetMessage.SendTileSquare(Main.myPlayer, i, j, width, height);
 
                 //Sync the placement of the tile entity with other clients
@@ -40,6 +43,17 @@ namespace ProjectInfinity.Content.Tiles
             Point16 tileOrigin = new Point16(0, 0);
             int placedEntity = Place(i - tileOrigin.X, j - tileOrigin.Y);
             return placedEntity;
+        }
+
+        public override void Update()
+        {
+            /*int timer = 900;
+            if(++timer >= 900)
+            {
+                SoundEngine.PlaySound(new SoundStyle("ProjectInfinity/Sounds/SFX/intemple"), Position.ToWorldCoordinates());
+                timer = 0;
+            }*/
+            //loop sound and make it distance based
         }
         public Item storedItem = new Item();
         public bool HasStoredItem() => storedItem is not null && !storedItem.IsAir;
@@ -54,10 +68,6 @@ namespace ProjectInfinity.Content.Tiles
         public int CheckItem()
         {
             return storedItem.type;
-        }
-        public override void SaveData(TagCompound tag)
-        {
-         //learn this shit   
         }
     }
 }

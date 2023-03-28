@@ -21,7 +21,6 @@ namespace ProjectInfinity.Content.Items.Weapons.Magic
         public override string Texture => AssetDirectory.Magic + "PHwand";
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("placeholder wand");
         }
         public override void SetDefaults()
         {
@@ -101,7 +100,7 @@ namespace ProjectInfinity.Content.Items.Weapons.Magic
             Projectile.spriteDirection = Projectile.direction;
         }
         
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             SoundEngine.PlaySound(SoundID.MaxMana);
             Main.player[Projectile.owner].statMana += (Main.player[Projectile.owner].statManaMax2 * 2) / 50;

@@ -13,6 +13,8 @@ Mods: {
 			Radioactive_sludge.DisplayName: Radioactive Sludge
 			bob.DisplayName: bob
 			CrystalHive.DisplayName: Crystal Hive
+			TestPlatform.DisplayName: " "
+			PlatformBossPlatform.DisplayName: " "
 		}
 
 		Buffs: {
@@ -53,15 +55,50 @@ Mods: {
 				Tooltip: zattiri zort zort
 			}
 
-			examplebar.DisplayName: Example bar
-			ArenaDoor.DisplayName: Arena door
-			AsteroidBlock.DisplayName: Asteriod Block
-			CrystalAltar.DisplayName: Crystal altar
-			CrystalEntrance.DisplayName: Crystal entrance
-			CrystalGlassWall.DisplayName: Crystal glass wall item
-			CrystalLaser.DisplayName: Crystal laser
-			CrystalSandstone.DisplayName: Crystal sandstone
-			CrystalSandstoneWall.DisplayName: Crystal sandstone wall item
+			examplebar: {
+				DisplayName: Example bar
+				Tooltip: ""
+			}
+
+			ArenaDoor: {
+				DisplayName: Arena door
+				Tooltip: ""
+			}
+
+			AsteroidBlock: {
+				DisplayName: Asteriod Block
+				Tooltip: ""
+			}
+
+			CrystalAltar: {
+				DisplayName: Crystal altar
+				Tooltip: ""
+			}
+
+			CrystalEntrance: {
+				DisplayName: Crystal entrance
+				Tooltip: ""
+			}
+
+			CrystalGlassWall: {
+				DisplayName: Crystal glass wall item
+				Tooltip: ""
+			}
+
+			CrystalLaser: {
+				DisplayName: Crystal laser
+				Tooltip: ""
+			}
+
+			CrystalSandstone: {
+				DisplayName: Crystal sandstone
+				Tooltip: ""
+			}
+
+			CrystalSandstoneWall: {
+				DisplayName: Crystal sandstone wall item
+				Tooltip: ""
+			}
 
 			PetrifiedWood: {
 				DisplayName: Petrified Wood
@@ -78,34 +115,85 @@ Mods: {
 				Tooltip: Wood block belongs to crystal desert
 			}
 
-			exampleore.DisplayName: Example ore
-			InvisibleWall.DisplayName: Invisible wall item
-			TestDye.DisplayName: Test Dye
-			CrystalWand.DisplayName: Crystal Wand
-			DebugStick.DisplayName: Debug Stick
+			exampleore: {
+				DisplayName: Example ore
+				Tooltip: ""
+			}
+
+			InvisibleWall: {
+				DisplayName: Invisible wall item
+				Tooltip: ""
+			}
+
+			ItemPedestal: {
+				DisplayName: Item pedestal
+				Tooltip: ""
+			}
+
+			TestDye: {
+				DisplayName: Test Dye
+				Tooltip: ""
+			}
+
+			CrystalCore: {
+				DisplayName: Crystal Core
+				Tooltip: core
+			}
+
+			CrystalWand: {
+				DisplayName: Crystal Wand
+				Tooltip: ""
+			}
+
+			DebugStick: {
+				DisplayName: Debug Stick
+				Tooltip: ""
+			}
 
 			Radioactive_barrel: {
 				DisplayName: Radioactive Barrel
 				Tooltip: It attracts an abomination
 			}
 
-			ScreenShaderDebug.DisplayName: Screen Shader debug
+			ScreenShaderDebug: {
+				DisplayName: Screen Shader debug
+				Tooltip: ""
+			}
 
 			ShardPiece: {
 				DisplayName: Shard Piece
 				Tooltip: A piece of a shard
 			}
 
-			SubworldItem.DisplayName: Subworld Item
-			PHwand.DisplayName: placeholder wand
-			ProjDeneme.DisplayName: deneme
+			SubworldItem: {
+				DisplayName: Subworld Item
+				Tooltip: ""
+			}
+
+			KristalWand: {
+				DisplayName: Kristal Wand
+				Tooltip: Right-click to shoot a Kristal projectile straight up
+			}
+
+			PHwand: {
+				DisplayName: placeholder wand
+				Tooltip: ""
+			}
+
+			ProjDeneme: {
+				DisplayName: deneme
+				Tooltip: ""
+			}
 
 			ShardBlade: {
 				DisplayName: Shard Blade
 				Tooltip: A strong power that used to rule to crystal desert once upon a time...
 			}
 
-			SoulSword.DisplayName: soulsword
+			SoulSword: {
+				DisplayName: soulsword
+				Tooltip: ""
+			}
 
 			Test: {
 				DisplayName: Test
@@ -121,8 +209,15 @@ Mods: {
 					'''
 			}
 
-			PHbow.DisplayName: placeholder bow
-			PHbowsplit.DisplayName: split bow
+			PHbow: {
+				DisplayName: placeholder bow
+				Tooltip: ""
+			}
+
+			PHbowsplit: {
+				DisplayName: split bow
+				Tooltip: ""
+			}
 		}
 
 		Projectiles: {
@@ -140,8 +235,11 @@ Mods: {
 			PrismProj.DisplayName: Crystalprism
 			CrystalHiveProj.DisplayName: Crystal Hive Proj
 			UpwardsBoost.DisplayName: Upwards Boost
+			KristalProjectile.DisplayName: Kristal
 			LaserBase1.DisplayName: Laser Base1
 			CrystalLaser.DisplayName: Crystal Laser
+			CrystalWandLaser.DisplayName: Crystal Wand Laser
+			CrystalWandLaser1.DisplayName: Crystal Wand Laser1
 			debugproj.DisplayName: debugproj
 			Gamma_ray.DisplayName: Gamma Ray
 			LaserCrystal.DisplayName: Laser Crystal
@@ -161,6 +259,18 @@ Mods: {
 			CrystalDesertEntrance_Tile.MapEntry: Crystal desert entrance
 			PetrifiedWoodChest_Tile_Locked.MapEntry: Petrified wood Chest
 			exampletile.MapEntry: Example Tile
+			ItemPedestal_Tile.MapEntry: Item pedestal
+			PetrifiedWood_Tile.MapEntry: Petrified Wood_ Tile
+			CrystalSandstone_Tile.MapEntry: Crystal Sandstone_ Tile
+			CrystalLaser_Tile.MapEntry: Crystal Laser_ Tile
+			AsteroidBlock_Tile.MapEntry: Asteroid Block_ Tile
+			ArenaDoor_Tile.MapEntry: Arena Door_ Tile
+		}
+
+		Walls: {
+			PetrifiedWoodWall_Tile.MapEntry: Petrified Wood Wall_ Tile
+			CrystalSandstoneWall_Tile.MapEntry: Crystal Sandstone Wall_ Tile
+			CrystalGlassWall_Tile.MapEntry: Crystal Glass Wall_ Tile
 		}
 	}
 }

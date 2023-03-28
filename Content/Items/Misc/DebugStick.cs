@@ -19,7 +19,6 @@ namespace ProjectInfinity.Content.Items.Misc
         public override string Texture => AssetDirectory.Misc + "CrystalWand";
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Debug Stick");
         }
         public override void SetDefaults()
         {

@@ -30,7 +30,6 @@ namespace ProjectInfinity.Content.Bosses.CrystalDesert
         }
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Crystal Heart");
             //Main.npcFrameCount[Type] = 6;
             // Influences how the NPC looks in the Bestiary
             NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)

@@ -12,7 +12,6 @@ namespace ProjectInfinity.Content.Projectiles
         public override string Texture => AssetDirectory.Projectiles + Name;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Missile");
             Main.projFrames[Projectile.type] = 4;
 
         }
@@ -115,7 +114,7 @@ namespace ProjectInfinity.Content.Projectiles
         }
 
 
-        public override void OnHitPlayer(Player target, int damage, bool crit)
+        public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
             Projectile.Kill();
         }

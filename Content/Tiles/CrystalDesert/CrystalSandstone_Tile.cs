@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
@@ -28,14 +29,8 @@ namespace ProjectInfinity.Content.Tiles.CrystalDesert
             Main.lightning = 15f;
             
 
-            ModTranslation name = CreateMapEntryName();
+            LocalizedText name = CreateMapEntryName();
             AddMapEntry(Color.DarkOliveGreen, name);
-            name.SetDefault("");
-        }
-        public override bool Drop(int i, int j)
-        {
-            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<CrystalSandstone>());
-            return base.Drop(i, j);
         }
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
         {

@@ -15,11 +15,10 @@ namespace ProjectInfinity.Content.Items.Accessories.ManaOverloader
 {
     internal class ManaOverloader : ModItem
     {
-        public override string Texture => AssetDirectory.Accessories + "ManaOverloader";
+        public override string Texture => AssetDirectory.Accessories + Name;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Mana Overloader");
-            Tooltip.SetDefault("Grants Magic damage and crit chance based on your mana.");
+
         }
         public override void SetDefaults()
         {

@@ -14,14 +14,9 @@ namespace ProjectInfinity.Content.Items.Misc
         public override string Texture => AssetDirectory.Misc + Name;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Radioactive Barrel");
-            Tooltip.SetDefault("It attracts an abomination");
-
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
             ItemID.Sets.SortingPriorityBossSpawns[Type] = 12;
-
         }
-
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -34,18 +29,14 @@ namespace ProjectInfinity.Content.Items.Misc
             Item.useStyle = ItemUseStyleID.HoldUp;
             Item.consumable = false;
         }
-
         public override bool CanUseItem(Player player)
         {
-
             return !NPC.AnyNPCs(ModContent.NPCType<Radioactive_sludge>());
         }
-
         public override bool? UseItem(Player player)
         {
             if (player.whoAmI == Main.myPlayer)
             {
-
                 SoundEngine.PlaySound(SoundID.Roar, player.position);
 
                 int type = ModContent.NPCType<Radioactive_sludge>();
@@ -56,14 +47,10 @@ namespace ProjectInfinity.Content.Items.Misc
                 }
                 else
                 {
-
-                    NetMessage.SendData(MessageID.SpawnBoss, number: player.whoAmI, number2: type);
+                    NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type);
                 }
             }
-
             return true;
         }
-
-
     }
 }

@@ -28,7 +28,6 @@ namespace ProjectInfinity.Content.Items.Weapons.Magic
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("deneme");
         }
         public override void SetDefaults()
         {

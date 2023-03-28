@@ -11,15 +11,12 @@ namespace ProjectInfinity.Content.Buffs.Debuffs
 {
     internal class CrystalHeartDebuff : ModBuff
     {
-        public override string Texture => AssetDirectory.Buffs + "CrystalHeartDebuff";
+        public override string Texture => AssetDirectory.Buffs + Name;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Crystal Heart Cooldown");
-            Description.SetDefault("You can revive again");
             Main.debuff[Type] = true;
             Main.pvpBuff[Type] = true;
-            Main.buffNoSave[Type] = false;
-            
+            Main.buffNoSave[Type] = false;   
         }
     }
 }

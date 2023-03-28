@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
@@ -23,9 +24,8 @@ namespace ProjectInfinity.Content.Tiles.CrystalDesert
             Main.tileFrameImportant[Type] = true;
             Main.lightning = 5f;
             
-            ModTranslation name = CreateMapEntryName();
+            LocalizedText name = CreateMapEntryName();
             AddMapEntry(Color.DeepPink, name);
-            name.SetDefault("");
         }
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
         {

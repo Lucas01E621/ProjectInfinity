@@ -5,10 +5,10 @@ using ProjectInfinity.Content.NPCs.BaseTypes;
 using System.Linq;
 using Terraria.ID;
 using Terraria;
+using Terraria.IO;
 using Terraria.ModLoader;
 using ProjectInfinity.Common.Players;
 using ProjectInfinity.Content.Bosses.PlatformBoss;
-using IL.Terraria.IO;
 
 namespace ProjectInfinity.Content.CustomHooks
 {
@@ -17,17 +17,17 @@ namespace ProjectInfinity.Content.CustomHooks
 		//Orig is called when appropriate, but this is still messing with vanilla behavior. Also IL.
 		public override void Load()
 		{
-			On.Terraria.Player.SlopingCollision += PlatformCollision;
+			Terraria.On_Player.SlopingCollision += PlatformCollision;
 
-			IL.Terraria.Projectile.AI_007_GrapplingHooks += GrapplePlatforms;
+			Terraria.IL_Projectile.AI_007_GrapplingHooks += GrapplePlatforms;
 		}
 
 		public override void Unload()
 		{
-			IL.Terraria.Projectile.AI_007_GrapplingHooks -= GrapplePlatforms;
+			Terraria.IL_Projectile.AI_007_GrapplingHooks -= GrapplePlatforms;
 		}
 
-		private void PlatformCollision(On.Terraria.Player.orig_SlopingCollision orig, Player self, bool fallThrough, bool ignorePlats)
+		private void PlatformCollision(Terraria.On_Player.orig_SlopingCollision orig, Player self, bool fallThrough, bool ignorePlats)
 		{
 			if (self.GetModPlayer<MPlayer>().platformTimer > 0)
 			{

@@ -17,7 +17,6 @@ namespace ProjectInfinity.Content.Items.Blocks.CrystalDesert
         public override string Texture => AssetDirectory.CrystalDesertBlocks + Name;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Crystal sandstone");
         }
         public override void SetDefaults()
         {

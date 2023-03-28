@@ -23,7 +23,6 @@ namespace ProjectInfinity.Content.NPCs.enemies.CrystalDesert
         }
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Crystal Hive");
 
         }
         public override void SetDefaults()

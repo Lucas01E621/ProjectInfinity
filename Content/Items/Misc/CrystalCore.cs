@@ -10,20 +10,18 @@ using Terraria.ModLoader;
 
 namespace ProjectInfinity.Content.Items.Misc
 {
-    public class ShardPiece : ModItem
+    internal class CrystalCore : ModItem
     {
-        public override string Texture => AssetDirectory.Misc + Name;
+        public override string Texture => AssetDirectory.Misc + "ShardPiece";
         public override void SetStaticDefaults()
         {
-
         }
 
         public override void SetDefaults()
         {
             Item.width = 20;
             Item.height = 20;
-            Item.maxStack = 99;
-            Item.value = Item.sellPrice(gold: 1);
+            Item.maxStack = 1;
             Item.rare = ItemRarityID.Pink;
         }
     }

@@ -19,7 +19,7 @@ namespace ProjectInfinity.Content.Items.Misc
         public override string Texture => AssetDirectory.Misc + "CrystalWand";
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Screen Shader debug");
+            
         }
         public override void SetDefaults()
         {

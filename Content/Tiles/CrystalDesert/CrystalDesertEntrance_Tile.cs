@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -29,9 +30,8 @@ namespace ProjectInfinity.Content.Tiles.CrystalDesert
             TileObjectData.newTile.Origin = new Point16(0,0);
             TileObjectData.addTile(Type);
 
-            ModTranslation name = CreateMapEntryName();
+            LocalizedText name = CreateMapEntryName();
             AddMapEntry(Color.Pink, name);
-            name.SetDefault("Crystal desert entrance");
         }
     }
 }
