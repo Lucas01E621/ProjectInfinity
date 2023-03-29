@@ -15,6 +15,7 @@ Mods: {
 			CrystalHive.DisplayName: Crystal Hive
 			TestPlatform.DisplayName: " "
 			PlatformBossPlatform.DisplayName: " "
+			GammaSmasher.DisplayName: Gamma Smasher
 		}
 
 		Buffs: {
@@ -36,6 +37,11 @@ Mods: {
 			UpwardsBoostBuff: {
 				DisplayName: u boost
 				Description: Your soul is slowly decaying
+			}
+
+			SoulDecay: {
+				DisplayName: Soul Decay
+				Description: Mods.ProjectInfinity.Buffs.SoulDecay.Description
 			}
 		}
 
@@ -216,6 +222,11 @@ Mods: {
 
 			PHbowsplit: {
 				DisplayName: split bow
+				Tooltip: ""
+			}
+
+			CrystalClaymore: {
+				DisplayName: Crystal Claymore
 				Tooltip: ""
 			}
 		}

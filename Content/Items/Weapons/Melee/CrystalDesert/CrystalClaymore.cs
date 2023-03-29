@@ -15,12 +15,7 @@ namespace ProjectInfinity.Content.Items.Weapons.Melee.CrystalDesert
     public class CrystalClaymore : ModItem
     {
         public override string Texture => AssetDirectory.Melee + "SoulSword";
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Crystal Claymore");
-            Tooltip.SetDefault("A massive sword made of crystal");
-        }
-
+       
         public override void SetDefaults()
         {
             Item.damage = 60;

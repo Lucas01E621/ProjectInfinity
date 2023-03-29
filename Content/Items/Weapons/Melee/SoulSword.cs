@@ -80,11 +80,11 @@ namespace ProjectInfinity.Content.Items.Weapons.Melee
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<souldecay>(), 240);
+            target.AddBuff(ModContent.BuffType<SoulDecay>(), 240);
         }
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            target.AddBuff(ModContent.BuffType<souldecay>(), 240);
+            target.AddBuff(ModContent.BuffType<SoulDecay>(), 240);
         }
     }
 }

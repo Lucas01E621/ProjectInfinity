@@ -12,7 +12,7 @@ using ProjectInfinity.Core;
 
 namespace ProjectInfinity.Content.Buffs.Debuffs
 {
-    internal class souldecay : ModBuff
+    internal class SoulDecay : ModBuff
     {
         public override string Texture => AssetDirectory.Buffs + Name;
         public override void SetStaticDefaults()
