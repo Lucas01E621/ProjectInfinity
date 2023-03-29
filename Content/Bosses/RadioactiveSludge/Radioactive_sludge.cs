@@ -8,6 +8,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using ProjectInfinity.Common.Systems;
 using ProjectInfinity.Core;
+using ProjectInfinity.Content.NPCs;
 
 namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
 {
@@ -205,6 +206,8 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
             if (NPC.GetLifePercent() < 0.5f) {
                 SecondStage = true;
                 NPC.netUpdate = true;
+                var entitySource = NPC.GetSource_FromAI();
+                int index = NPC.NewNPC(entitySource, (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<GammaSmasher>(), NPC.whoAmI);
             }
         }
 
@@ -254,9 +257,7 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
                 case (float)ActionState.Idle2:
                     Idle2();
                     break;
-                case (float)ActionState.Jumpy:
-                    Jumpy();
-                    break;
+
 
 
 
@@ -297,43 +298,14 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
             if (AI_Timer == 120)
             {
                 Main.NewText("second phase");
+                NPC.velocity = new Vector2(0, 0);
 
-                AI_State = (float)ActionState.Jumpy;
-                AI_Timer = 0;
             }
             
         }
 
 
-        private void Jumpy()
-        {
-            AI_Timer++;
 
-            if (AI_Timer == 60)
-            {
-                for (int i = 0; i < 50; i++)
-                {
-                    Dust.NewDust(NPC.BottomLeft, 40, 10, DustID.Flare, 0, 0, 0, default, 2);
-                    Dust.NewDust(NPC.BottomRight, 40, 10, DustID.Flare, 0, 0, 0, default, 2);
-                }
-
-                NPC.TargetClosest(true);
-                NPC.velocity = new Vector2(NPC.direction * 2, -5f);
-            }
-
-            else if (NPC.collideX == true || NPC.collideY == true && AI_Timer > 60)
-            {
-                for (int i = 0; i < 50; i++)
-                {
-                    Dust.NewDust(NPC.BottomLeft, 100, 10, DustID.Smoke, 0, 0, 0, default, 2);
-                    Dust.NewDust(NPC.BottomRight, 100, 10, DustID.Smoke, 0, 0, 0, default, 2);
-
-                }
-                NPC.velocity = new Vector2(0, 0);
-                AI_Timer = 0;
-            }
-
-        }
 
         private void Jump()
         {
