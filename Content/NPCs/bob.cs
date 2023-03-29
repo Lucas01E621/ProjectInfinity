@@ -30,7 +30,6 @@ namespace ProjectInfinity.Content.NPCs
         public bool HasPosition => PositionIndex > -1;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("bob");
         }
         public override void SetDefaults()
         {

@@ -10,8 +10,7 @@ namespace ProjectInfinity.Content.Items.Weapons.Melee
     {
         public override string Texture => AssetDirectory.Melee + Name;
         public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("i use this to punish bosses for not following my orders,YOU SHALL DIE INFERIOR BEING."); // The (English) text shown below your weapon's name.
+        { // The (English) text shown below your weapon's name.
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }

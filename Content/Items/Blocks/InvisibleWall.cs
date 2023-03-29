@@ -17,7 +17,6 @@ namespace ProjectInfinity.Content.Items.Blocks
         public override string Texture => AssetDirectory.Blocks + Name;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Invisible wall item");
         }
         public override void SetDefaults()
         {

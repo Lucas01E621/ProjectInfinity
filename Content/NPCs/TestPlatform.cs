@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace ProjectInfinity.Content.NPCs
@@ -22,7 +23,6 @@ namespace ProjectInfinity.Content.NPCs
         public ref float FallTime => ref NPC.ai[3];
 
         public override string Texture => AssetDirectory.NPCs + Name;
-
         public override void SafeSetDefaults()
         {
             NPC.width = 200;

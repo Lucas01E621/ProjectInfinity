@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
@@ -19,9 +20,8 @@ namespace ProjectInfinity.Content.Tiles.CrystalDesert
         public override void SetStaticDefaults()
         {
             Main.tileMergeDirt[Type] = true;
-            ModTranslation name = CreateMapEntryName();
+            LocalizedText name = CreateMapEntryName();
             AddMapEntry(Color.Gray, name);
-            name.SetDefault("");
             
         }
     }

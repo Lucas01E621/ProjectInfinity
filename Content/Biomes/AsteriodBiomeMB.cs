@@ -13,10 +13,9 @@ namespace ProjectInfinity.Content.Biomes
 {
     internal class AsteriodBiomeMB : ModBiome
     {
-        
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Asteriod Biome");
+            
         }
         public override bool IsBiomeActive(Player player)
         {

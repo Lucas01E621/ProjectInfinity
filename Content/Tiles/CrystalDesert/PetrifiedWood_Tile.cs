@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace ProjectInfinity.Content.Tiles.CrystalDesert
@@ -24,14 +25,8 @@ namespace ProjectInfinity.Content.Tiles.CrystalDesert
             Main.tileBlockLight[Type] = true;
             Main.tileLighted[Type] = true;
 
-            ModTranslation name = CreateMapEntryName();
+            LocalizedText name = CreateMapEntryName();
             AddMapEntry(new Microsoft.Xna.Framework.Color(127, 133, 102), name);
-            name.SetDefault("");
-        }
-        public override bool Drop(int i, int j)
-        {
-            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<PetrifiedWood>());
-            return base.Drop(i, j);
         }
     }
 }

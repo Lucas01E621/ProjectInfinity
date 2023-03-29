@@ -16,11 +16,10 @@ namespace ProjectInfinity.Content.Items.Accessories.CrystalHeart
 {
     internal class CrystalHeart : ModItem
     {
-        public override string Texture => AssetDirectory.Accessories + "CrystalHeart";
+        public override string Texture => AssetDirectory.Accessories + Name;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Crystal Heart");
-            Tooltip.SetDefault("Saves you from dying once");
+
         }
         public override void SetDefaults()
         {

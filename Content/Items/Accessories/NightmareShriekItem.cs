@@ -16,11 +16,10 @@ namespace ProjectInfinity.Content.Items.Accessories.NightmareShriek
 {
     internal class NightmareShriekItem : ModItem
     {
-        public override string Texture => AssetDirectory.Accessories + "NightmareShriekItem";
+        public override string Texture => AssetDirectory.Accessories + Name;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Nightmare Shriek");
-            Tooltip.SetDefault("zattiri zort zort");
+
         }
         public override void SetDefaults()
         {
@@ -65,7 +64,7 @@ namespace ProjectInfinity.Content.Items.Accessories.NightmareShriek
             Projectile.position.X = Main.player[Projectile.owner].position.X - 8;
             Projectile.position.Y = Main.player[Projectile.owner].position.Y - 32;
         }
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             Main.player[Projectile.owner].AddBuff(ModContent.BuffType<NMSCooldown>(), 15 * 60);
             Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Vector2.Zero, ModContent.ProjectileType<NightmareShriekProj1>(), 1, 0, Main.myPlayer);

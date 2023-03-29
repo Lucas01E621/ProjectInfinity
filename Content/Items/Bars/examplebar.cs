@@ -12,11 +12,7 @@ namespace ProjectInfinity.Content.Items.Bars
 {
     internal class examplebar : ModItem
     {
-        public override string Texture => AssetDirectory.Bars + "examplebar";
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Example bar");
-        }
+        public override string Texture => AssetDirectory.Bars + Name;
         public override void SetDefaults()
         {
             Item.width = 30;

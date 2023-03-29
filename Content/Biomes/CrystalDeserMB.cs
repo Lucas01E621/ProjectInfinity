@@ -13,10 +13,9 @@ namespace ProjectInfinity.Content.Biomes
 {
     internal class CrystalDeserMB : ModBiome
     {
-        
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Crystal Desert");
+            
         }
         public override bool IsBiomeActive(Player player)
         {

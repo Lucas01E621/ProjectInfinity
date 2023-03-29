@@ -22,7 +22,6 @@ namespace ProjectInfinity.Content.Items.Weapons.Melee
         public override string Texture => AssetDirectory.Melee + "SoulSword"; 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("soulsword");
         }
         public override void SetDefaults()
         {
@@ -79,11 +78,11 @@ namespace ProjectInfinity.Content.Items.Weapons.Melee
                 Projectile.Kill();
             }
         }
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(ModContent.BuffType<souldecay>(), 240);
         }
-        public override void OnHitPlayer(Player target, int damage, bool crit)
+        public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
             target.AddBuff(ModContent.BuffType<souldecay>(), 240);
         }

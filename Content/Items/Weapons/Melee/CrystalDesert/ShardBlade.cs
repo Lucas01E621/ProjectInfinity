@@ -18,8 +18,6 @@ namespace ProjectInfinity.Content.Items.Weapons.Melee
         public override string Texture => AssetDirectory.Melee + "CrystalDesert/" + Name;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Shard Blade");
-            Tooltip.SetDefault("A strong power that used to rule to crystal desert once upon a time...");
         }
 
         public override void SetDefaults()

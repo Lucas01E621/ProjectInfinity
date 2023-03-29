@@ -18,7 +18,6 @@ namespace ProjectInfinity.Content.Items.Weapons.Ranged
         public override string Texture => AssetDirectory.Ranged + "PHbowsplit";
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("split bow");
         }
         public override void SetDefaults()
         {

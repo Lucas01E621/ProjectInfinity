@@ -20,13 +20,12 @@ namespace ProjectInfinity.Content.Items.Misc
 {
     internal class CrystalWand : ModItem
     {
-        public override string Texture => AssetDirectory.Misc + "CrystalWand";
+        public override string Texture => AssetDirectory.Misc + Name;
 
         public int timesFired = 0;
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Crystal Wand");
         }
         public override void SetDefaults()
         {

@@ -18,7 +18,6 @@ namespace ProjectInfinity.Content.Items.Weapons.Ranged
         public override string Texture => AssetDirectory.Ranged + "PHbow";
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("placeholder bow");
         }
         public override void SetDefaults()
         {
