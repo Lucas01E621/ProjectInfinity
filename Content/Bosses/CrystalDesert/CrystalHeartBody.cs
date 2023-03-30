@@ -9,16 +9,18 @@ using Terraria.ID;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using ProjectInfinity.Core;
+using ProjectInfinity.Content.NPCs.BaseTypes;
 
 namespace ProjectInfinity.Content.Bosses.CrystalDesert
 {
     [AutoloadBossHead]
-    internal class CrystalHeartBody : ModNPC
+    internal class CrystalHeartBody : ModBoss
     {
+        public override int maxHP => 15000;
+        public override int defense => 25;
+        public override bool hasImmunityBeforeFight => true;
         public override string Texture => AssetDirectory.CrystalHeart + "CrystalHeartBody";
         public override string BossHeadTexture => AssetDirectory.CrystalHeart + "CrystalHeartBody_Head_Boss";
-
-        public bool fightStarted = false;
         public bool SpawnedMinions
         {
             get => NPC.localAI[0] == 1f;
@@ -28,7 +30,7 @@ namespace ProjectInfinity.Content.Bosses.CrystalDesert
         {
             return ModContent.NPCType<CrystalVein>();
         }
-        public override void SetStaticDefaults()
+        public override void SafeSetStaticDefaults()
         {
             //Main.npcFrameCount[Type] = 6;
             // Influences how the NPC looks in the Bestiary
@@ -57,7 +59,7 @@ namespace ProjectInfinity.Content.Bosses.CrystalDesert
             NPCID.Sets.DebuffImmunitySets.Add(Type, debuffData);
 
         }
-        public override void SetDefaults()
+        public override void SafeSetDefaults()
         {
             NPC.width = 560;
             NPC.height = 400;
@@ -90,7 +92,7 @@ namespace ProjectInfinity.Content.Bosses.CrystalDesert
                 Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/orthodoxia");
             }
         }
-        public override void AI()
+        public override void SafeAI()
         {
             if (NPC.target < 0 || NPC.target == 255 || Main.player[NPC.target].dead || !Main.player[NPC.target].active)
             {
@@ -116,7 +118,6 @@ namespace ProjectInfinity.Content.Bosses.CrystalDesert
         public override void OnSpawn(IEntitySource source)
         {
             SpawnVeins();
-            fightStarted = false;
         }
         public int ReturnStage()
         {

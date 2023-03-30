@@ -13,7 +13,7 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
 {
     internal abstract class MovingPlatform : ModNPC
     {
-        Vector2 prevPos;
+        //Vector2 prevPos;
 
         public bool beingStoodOn;
 

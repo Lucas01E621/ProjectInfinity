@@ -62,16 +62,13 @@ namespace ProjectInfinity.Content.Bosses.CrystalDesert
             NPC.position.X = (int)NPC.position.X;
             NPC.position.Y = (int)NPC.position.Y;
         }
-        public override void OnHitByProjectile(Projectile projectile, NPC.HitInfo hit, int damageDone)
+        public override bool PreKill()
         {
-            if (NPC.life < 2)
-            {
-                NPC.life = NPC.lifeMax;
-                NPC.dontTakeDamage = true;
-                downed = true;
-                Main.NewText("onhit");
-                SpawnMinions();
-            }
+            NPC.life = NPC.lifeMax;
+            NPC.dontTakeDamage = true;
+            downed = true;
+            SpawnMinions();
+            return false;
         }
         private bool Despawn()
         {

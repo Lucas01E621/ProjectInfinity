@@ -1,4 +1,5 @@
-﻿using ProjectInfinity.Core;
+﻿using ProjectInfinity.Content.NPCs.BaseTypes;
+using ProjectInfinity.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,21 +7,31 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.GameContent;
 using Terraria.ModLoader;
 
 namespace ProjectInfinity.Content.Bosses.PlatformBoss
 {
     
-    internal class PlatformBoss : ModNPC
+    internal class PlatformBoss : ModBoss
     {
-        public override string Texture => AssetDirectory.CrystalHeart + "CrystalHeartBody"; 
+        public override bool hasImmunityBeforeFight => true;
+        public override int maxHP => 15000;
+        public override int defense => 20;
+        public override string Texture => AssetDirectory.CrystalHeart + "CrystalHeartBody";
+        public override string BossHeadTexture => AssetDirectory.CrystalHeart + "CrystalHeartBody_Head_Boss";
         public int bossPlatformTimer { get; set; }
-        public override void SetDefaults()
+        public override void SafeSetDefaults()
         {
             NPC.width = 500;
             NPC.height = 500;
-            NPC.lifeMax = 1000;
             NPC.noGravity = true;
+            NPC.dontTakeDamage = true;
+            NPC.damage = 100;
+        }
+        public override void SafeAI()
+        {
+            
         }
         public override void OnSpawn(IEntitySource source)
         {
@@ -43,16 +54,6 @@ namespace ProjectInfinity.Content.Bosses.PlatformBoss
                     (child.ModNPC as PlatformBossPlatform).parent = this;
             }
             
-        }
-        public override void AI()
-        {
-            bossPlatformTimer--;
-            NPC.ai[0]++;
-            if(NPC.ai[0] >= 60)
-            {
-                bossPlatformTimer = 10;
-            }
-            Main.NewText(bossPlatformTimer);
         }
     }
 }
