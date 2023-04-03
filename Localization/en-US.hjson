@@ -16,6 +16,7 @@ Mods: {
 			TestPlatform.DisplayName: " "
 			PlatformBossPlatform.DisplayName: " "
 			GammaSmasher.DisplayName: Gamma Smasher
+			UndeadSkeleton.DisplayName: Undead Skeleton
 		}
 
 		Buffs: {
@@ -229,6 +230,21 @@ Mods: {
 				DisplayName: Crystal Claymore
 				Tooltip: ""
 			}
+
+			LostSoul: {
+				DisplayName: Lost Soul
+				Tooltip: ""
+			}
+
+			NecroStaff: {
+				DisplayName: Necro Staff
+				Tooltip: ""
+			}
+
+			GuideToNecromancy: {
+				DisplayName: Guide To Necromancy
+				Tooltip: ""
+			}
 		}
 
 		Projectiles: {
@@ -258,6 +274,7 @@ Mods: {
 			raycastproj.DisplayName: raycastproj
 			raycastproj1.DisplayName: raycastproj1
 			TestRay.DisplayName: Test Ray
+			BoneShard.DisplayName: Bone Shard
 		}
 
 		Tiles: {

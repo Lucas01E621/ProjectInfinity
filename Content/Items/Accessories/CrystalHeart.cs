@@ -30,7 +30,7 @@ namespace ProjectInfinity.Content.Items.Accessories.CrystalHeart
         public override void UpdateEquip(Player player)
         {
             player.GetModPlayer<MPlayer>().CrystalHeart = true;
-            if (player.GetModPlayer<MPlayer>().died == true)
+            if (player.GetModPlayer<MPlayer>().died)
             {
                 player.GetModPlayer<MPlayer>().CrystalHeart = false;
                 Item.TurnToAir();

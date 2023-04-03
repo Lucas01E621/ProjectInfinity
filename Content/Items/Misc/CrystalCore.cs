@@ -1,4 +1,5 @@
-﻿using ProjectInfinity.Core;
+﻿using ProjectInfinity.Common.Players;
+using ProjectInfinity.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;

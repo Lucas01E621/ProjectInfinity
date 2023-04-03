@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using ProjectInfinity.Content.Items.Misc;
+using ProjectInfinity.Content.Items.Misc.CrystalDesert;
 using ProjectInfinity.Core;
 using System;
 using System.Collections.Generic;

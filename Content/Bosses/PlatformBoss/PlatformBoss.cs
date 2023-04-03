@@ -12,7 +12,6 @@ using Terraria.ModLoader;
 
 namespace ProjectInfinity.Content.Bosses.PlatformBoss
 {
-    
     internal class PlatformBoss : ModBoss
     {
         public override bool hasImmunityBeforeFight => true;
@@ -20,6 +19,7 @@ namespace ProjectInfinity.Content.Bosses.PlatformBoss
         public override int defense => 20;
         public override string Texture => AssetDirectory.CrystalHeart + "CrystalHeartBody";
         public override string BossHeadTexture => AssetDirectory.CrystalHeart + "CrystalHeartBody_Head_Boss";
+
         public int bossPlatformTimer { get; set; }
         public override void SafeSetDefaults()
         {

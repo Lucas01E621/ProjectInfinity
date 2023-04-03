@@ -8,7 +8,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ProjectInfinity.Content.Items.Misc
+namespace ProjectInfinity.Content.Items.Misc.CrystalDesert
 {
     public class ShardPiece : ModItem
     {
