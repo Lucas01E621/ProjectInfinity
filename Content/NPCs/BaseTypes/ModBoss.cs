@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Graphics.Effects;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace ProjectInfinity.Content.NPCs.BaseTypes
@@ -36,14 +38,23 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
             NPC.friendly = false;
             SafeSetDefaults();
         }
+        int timer = 0;
+        int progress = 0;
+        int sweffecttimer = 0;
         public sealed override void AI()
         {
+            progress++;
             NPC.TargetClosest();
 
             Player player = Main.player[NPC.target];
             Projectile[] proj = Main.projectile.Take(Main.maxProjectiles).Where(p => p.active && p.owner == player.whoAmI).ToArray();
             bool any = proj.Any(p => p.Hitbox.Intersects(NPC.Hitbox));
 
+            if (fightStarted)
+            {
+                timer++;
+            }
+            //UpdateFX(pushed);
             ImmuneBeforeFight(hasImmunityBeforeFight);
             StartFight(any);
             PushPlayer(player, NPC.Hitbox.Intersects(player.Hitbox));
@@ -65,7 +76,6 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
                 NPC.dontTakeDamage = false;
                 NPC.boss = true;
                 fightStarted = true;
-                NPC.friendly = false;
             }
         }
         bool pushed = false;
@@ -77,9 +87,35 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
                 pushed = true;
                 dir.Normalize();
                 player.velocity = dir * 20;
-                //make the player immune to damage untill pushback is completed
             }
+            if (timer >= 60)
+            {
+                NPC.friendly = false;
+            }
+
+            /*if (Main.netMode != NetmodeID.Server && !Filters.Scene["Shockwave"].IsActive())
+            {
+                Filters.Scene.Activate("Shockwave", NPC.Center).GetShader().UseColor(3, 5, 13).UseTargetPosition(NPC.Center);
+            }*/
         }
+        /*void UpdateFX(bool pushed)
+        {
+            Main.NewText(sweffecttimer);
+            if (pushed)
+            {
+                if (Main.netMode != NetmodeID.Server && Filters.Scene["Shockwave"].IsActive())
+                {
+                    float sprogress = (180f - progress) / 60f;
+                    Filters.Scene["Shockwave"].GetShader().UseProgress(-sprogress).UseOpacity(100f * (1 - sprogress / 3f));
+                    sweffecttimer++;
+                }
+                if (sweffecttimer >= 3)
+                {
+                    Filters.Scene["Shockwave"].Deactivate();
+                }
+            }
+        }*/
+
         /// <summary>
         /// Basically AI() but it doesnt overrides custom logic 
         /// </summary>

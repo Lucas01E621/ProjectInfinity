@@ -25,6 +25,7 @@ namespace ProjectInfinity.Common.Players
         public bool waitDoubleJump;
         public bool hasDoubleJump;
         public bool canDoubleJump;
+        public bool NecroStaff;
         public int SpaceBreathTimer;
         public int platformTimer = 0;
         public override void ResetEffects()

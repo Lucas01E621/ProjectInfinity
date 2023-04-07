@@ -57,7 +57,11 @@ namespace ProjectInfinity.Content.Tiles
         }
         public override void SaveData(TagCompound tag)
         {
-         //learn this shit   
+            tag["storedItem"] = storedItem;
+        }
+        public override void LoadData(TagCompound tag)
+        {
+            storedItem = tag.Get<Item>("storedItem");
         }
     }
 }

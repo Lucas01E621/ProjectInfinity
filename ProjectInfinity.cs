@@ -73,6 +73,8 @@ namespace ProjectInfinity
         public void LoadFX()
         {
             Filters.Scene["testscreenshader"] = new Filter(new ScreenShaderData(new Ref<Effect>(this.Assets.Request<Effect>("Effects/testscreenshader", AssetRequestMode.ImmediateLoad).Value), "sstest"), EffectPriority.Medium);
+            Filters.Scene["Shockwave"] = new Filter(new ScreenShaderData(new Ref<Effect>(this.Assets.Request<Effect>("Effects/Shockwave", AssetRequestMode.ImmediateLoad).Value), "waveEffect"), EffectPriority.VeryHigh);
+            Filters.Scene["Shockwave"].Load();
         }
     }
 }
