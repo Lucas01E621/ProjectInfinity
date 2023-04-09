@@ -42,7 +42,7 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
             NPCID.Sets.DebuffImmunitySets.Add(Type, debuffdata);
         }
 
-        public override void SetDefaults()
+        public  void SafeSetDefaults()
         {
             NPC.width = 80;
             NPC.height = 80;
@@ -155,7 +155,7 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
 
 
 
-        public override void AI()
+        public void SafeAI()
         {
 
             Player player = Main.player[NPC.target];
