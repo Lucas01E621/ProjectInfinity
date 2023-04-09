@@ -4,12 +4,15 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.Audio;
+using Newtonsoft.Json.Bson;
+using Terraria.DataStructures;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace ProjectInfinity.Content.NPCs
 {
     internal class GammaSmasher : ModNPC
     {
-        private bool isJumping = false;
+        private bool onAir;
 
         private int jumpTimer = 0;
         private int jumpDuration = 60;
@@ -21,10 +24,9 @@ namespace ProjectInfinity.Content.NPCs
 
         private enum ActionState
         {
-            Idle,
-            Ball,
-            Missile,
-            Attack,
+            Hover,
+            Slam,
+            Missle,
         }
 
         public override string Texture => AssetDirectory.NPCs + Name;
@@ -36,96 +38,82 @@ namespace ProjectInfinity.Content.NPCs
             NPC.damage = 50;
             NPC.width = 20;
             NPC.height = 20;
+            NPC.friendly = true;
+            //NPC.aiStyle = -1;
             NPC.noTileCollide = false;
+            NPC.knockBackResist = 0;
+        }
+        public override void OnSpawn(IEntitySource source)
+        {
+            AI_State = (float)ActionState.Hover;
         }
         public override void AI()
         {
             Player player = Main.player[NPC.target];
+            onAir = !Collision.SolidCollision(NPC.BottomLeft, 20, 8, true);
+            int neededTimeToAttack = 0;
+            neededTimeToAttack++;
+            NPC.ai[2]++;
+            //Hover(player, (int)NPC.ai[2]);
+            //SlamAttack(player, onAir);
 
-            Attack(player);
-
+            
+            Main.NewText("ai state: " + AI_State);
             switch (AI_State)
             {
-                case (float)ActionState.Idle:
-                    Idle();
+                case (float)ActionState.Hover:
+                    Hover(player, (int)NPC.ai[2], neededTimeToAttack);
                     break;
-                case (float)ActionState.Ball:
-                    Ball(player);
+                case (float)ActionState.Slam:
+                    SlamAttack(player, onAir);
                     break;
-                case (float)ActionState.Missile:
+                case (float)ActionState.Missle:
                     Missile();
                     break;
-            }
-        }
-        private void Idle()
-        {
-            AI_Timer++;
-            if(AI_Timer == 120)
-            {
-                AI_State = (float)ActionState.Ball;
-                AI_Timer = 0;
-            }
-        }
-        private void Ball(Player player)
-        {
-            AI_Timer++;
-
-            if(AI_Timer == 60)
-            {
-                NPC.TargetClosest(true);
-                NPC.velocity = new Vector2(player.direction + 2,10);
             }
         }
         private void Missile()
         {
 
         }
-        private void Attack(Player player)
+        private void SlamAttack(Player player, bool onAir)
         {
-            if (isJumping)
+            if (onAir)
             {
-                jumpTimer++;
-
-                if (jumpTimer > jumpDuration)
-                {
-                    isJumping = false;
-                    jumpTimer = 0;
-                }
-                else
-                {
-                    NPC.velocity.Y = -jumpVelocity;
-                }
-            }
-            else if (player != null && NPC.Distance(player.Center) < 200f)
+                NPC.velocity.Y = 17;
+            }else
             {
-                isJumping = true;
-                NPC.velocity = Vector2.Zero;
-                NPC.netUpdate = true;
-
-                for (int i = 0; i < 10; i++)
-                {
-                    Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Smoke);
-                }
-
-                SoundEngine.PlaySound(new SoundStyle(), NPC.position);
-
-                Rectangle impactArea = new Rectangle((int)NPC.position.X - NPC.width / 2, (int)NPC.position.Y + NPC.height / 2, NPC.width * 2, NPC.height);
-                for (int i = 0; i < Main.maxPlayers; i++)
-                {
-                    if (player.active && !player.dead && impactArea.Intersects(player.Hitbox))
-                    {
-                        player.Hurt(Terraria.DataStructures.PlayerDeathReason.ByNPC(NPC.whoAmI), impactDamage, NPC.direction);
-                    }
-                }
-                for (int i = 0; i < Main.maxNPCs; i++)
-                {
-                    NPC otherNPC = Main.npc[i];
-                    if (otherNPC.active && !otherNPC.friendly && impactArea.Intersects(otherNPC.Hitbox))
-                    {
-                        otherNPC.SimpleStrikeNPC(impactDamage, NPC.direction);
-                    }
-                }
+                //make it go back to its old position
+                AI_State = (float)ActionState.Hover;
             }
+        }
+        private void Hover(Player player,int homingCooldown, int neededTimeToAttack)
+        {
+            const int homingDelay = 15;
+            float desiredFlySpeedInPixelsPerFrame = NPC.Distance(player.Center) > 500 ? 120 : 50;
+            const float amountOfFramesToLerpBy = 30;
+
+            NPC.position.Y = player.position.Y - 256;
+
+            if(homingCooldown > homingDelay)
+            {
+                Player target = Main.player[NPC.target];
+                Vector2 desiredVel = NPC.DirectionTo(target.Center) * desiredFlySpeedInPixelsPerFrame;
+                NPC.velocity = Vector2.Lerp(NPC.velocity, desiredVel, 1f / amountOfFramesToLerpBy);
+            }
+            
+            
+            if (NPC.Center.X >= player.Center.X - 32 && NPC.Center.X <= player.Center.X + 32)
+            {
+                neededTimeToAttack++;
+            }
+            if (neededTimeToAttack >= 30)
+            {
+                AI_State = (float)ActionState.Slam;
+                Main.NewText("attack");
+                neededTimeToAttack = 0;
+            }
+
         }
     }
 }

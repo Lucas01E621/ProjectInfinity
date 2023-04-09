@@ -13,7 +13,7 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
 {
     internal abstract class MovingPlatform : ModNPC
     {
-        //Vector2 prevPos;
+        Vector2 prevPos;
 
         public bool beingStoodOn;
 
@@ -83,7 +83,7 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
         public sealed override void AI()
         {
             SafeAI();
-            /*float yDistTraveled = NPC.position.Y - prevPos.Y;
+            float yDistTraveled = NPC.position.Y - prevPos.Y;
 
             if (NPC.velocity != Vector2.Zero && NPC.velocity.Y < -1f && yDistTraveled < NPC.velocity.Y * 1.5 && yDistTraveled > NPC.velocity.Y * 6)
             {
@@ -127,7 +127,7 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
             }
 
             prevPos = NPC.position;
-            beingStoodOn = false;*/
+            beingStoodOn = false;
         }
     }
 }

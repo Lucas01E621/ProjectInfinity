@@ -22,11 +22,11 @@ float4 gl_FragCoord;
 float2 uZoom;
 
 
-float4 FilterMyShader(float2 coords : TEXCOORD0, float2 uv : SV_Position) : COLOR0
+float4 FilterMyShader(float2 uv : TEXCOORD0, float2 position : SV_Position) : COLOR0
 {
-    float4 color = tex2D(uImage0, coords);
-    color.xy = uv.yx;
-    return color;
+    float2 offset = float2(0, frac(uTime * 6));
+    float4 pixelColor = tex2D(uImage0, uv);
+    return pixelColor;
 }
 
 technique Technique1

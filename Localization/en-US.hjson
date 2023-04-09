@@ -245,6 +245,21 @@ Mods: {
 				DisplayName: Guide To Necromancy
 				Tooltip: ""
 			}
+
+			CSsummoneritem4: {
+				DisplayName: C Ssummoneritem4
+				Tooltip: ""
+			}
+
+			CSsummoneritem2: {
+				DisplayName: C Ssummoneritem2
+				Tooltip: ""
+			}
+
+			CrystalVortexStaff: {
+				DisplayName: Crystal Vortex Staff
+				Tooltip: ""
+			}
 		}
 
 		Projectiles: {
@@ -275,6 +290,11 @@ Mods: {
 			raycastproj1.DisplayName: raycastproj1
 			TestRay.DisplayName: Test Ray
 			BoneShard.DisplayName: Bone Shard
+			UndeadSkeletonHitbox.DisplayName: Undead Skeleton Hitbox
+			TestProjectile.DisplayName: Test Projectile
+			TestProjectile1.DisplayName: Test Projectile1
+			CrystalVortex.DisplayName: Crystal Vortex
+			CrystalVortexShard.DisplayName: Crystal Vortex Shard
 		}
 
 		Tiles: {

@@ -62,7 +62,8 @@ namespace ProjectInfinity.Content.Items.Weapons.Summoner.Necromancer
             // Then we collapse all our nearby bones into the npc
             List<Projectile> bones = Main.projectile.SkipLast(1).Where(proj => proj.active && proj.type == ModContent.ProjectileType<BoneShard>() && proj.WithinRange(bestBone.position, 80) && proj.WithinRange(player.Center, 500)).ToList();
             int npcHp = bones.Count * 15;
-            int npcDmg = (bones.Count * 5) / 2 ; //add damage modifiers afterwards
+            int npcDmg = (bones.Count * 4) / 2; //add damage modifiers afterwards
+            int npcDef = (bones.Count * 2) / 5;
 
             foreach (var bone in bones)
             {
