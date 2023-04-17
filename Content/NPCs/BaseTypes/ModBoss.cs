@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using ProjectInfinity.Common.Systems.CameraHandler;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.Graphics.Effects;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -20,9 +22,37 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
         /// </summary>
         public virtual bool hasImmunityBeforeFight { get; set; }
         public virtual bool canDamageHostile { get; set; }
+        public virtual bool hasDeathAnim { get; set; }
+        public int deathAnimDuration;
+        public virtual int DeathAnimDuration
+        {
+            get
+            {
+                return deathAnimDuration;
+            }
+            set
+            {
+                if (hasDeathAnim)
+                    deathAnimDuration = value;
+            }
+        }
+        public virtual bool hasIntro { get; set; }
+        public int introDuration;
+        public virtual int IntroDuration
+        {
+            get
+            {
+                return introDuration;
+            }
+            set
+            {
+                if (hasIntro)
+                    introDuration = value;
+            }
+        }
 
+        public int[] ExtraAI = new int[99]; 
         public bool fightStarted = false;
-
         public sealed override void SetStaticDefaults()
         {
             SafeSetStaticDefaults();
@@ -38,12 +68,11 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
             NPC.friendly = false;
             SafeSetDefaults();
         }
-        int timer = 0;
+        int[] timer = new int[99];
         int progress = 0;
         int sweffecttimer = 0;
         public sealed override void AI()
         {
-            progress++;
             NPC.TargetClosest();
 
             Player player = Main.player[NPC.target];
@@ -52,15 +81,32 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
 
             if (fightStarted)
             {
-                timer++;
+                timer[0]++;
             }
+                
+
             //UpdateFX(pushed);
             ImmuneBeforeFight(hasImmunityBeforeFight);
             StartFight(any);
             PushPlayer(player, NPC.Hitbox.Intersects(player.Hitbox));
+            DeathAnim();
+
+            //this needs to be at the end for extra safety
             SafeAI();
         }
-        public void ImmuneBeforeFight(bool immunityBeforeStart)
+        public sealed override bool PreKill()
+        {
+            SafePreKill();
+            return !hasDeathAnim;
+        }
+        public sealed override void OnSpawn(IEntitySource source)
+        {
+            if (hasIntro && fightStarted)
+                CameraSystem.AsymetricalPan(120, introDuration, 120, NPC.Center);
+
+            SafeOnSpawn(source);
+        }
+        private void ImmuneBeforeFight(bool immunityBeforeStart)
         {
             if (immunityBeforeStart && !fightStarted)
             {
@@ -69,7 +115,7 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
                 NPC.friendly = true;
             }
         }
-        public void StartFight(bool projectile)
+        private void StartFight(bool projectile)
         {
             if(!fightStarted &&  (projectile || !hasImmunityBeforeFight))
             {
@@ -79,7 +125,7 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
             }
         }
         bool pushed = false;
-        public void PushPlayer(Player player,bool insideBoss)
+        private void PushPlayer(Player player,bool insideBoss)
         {
             if (insideBoss && fightStarted && !pushed)
             {
@@ -88,7 +134,7 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
                 dir.Normalize();
                 player.velocity = dir * 20;
             }
-            if (timer >= 60)
+            if (timer[0] >= 60)
             {
                 NPC.friendly = false;
             }
@@ -98,6 +144,12 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
                 Filters.Scene.Activate("Shockwave", NPC.Center).GetShader().UseColor(3, 5, 13).UseTargetPosition(NPC.Center);
             }*/
         }
+        private void DeathAnim()
+        {
+            if(hasDeathAnim && NPC.life <= 2)
+                CameraSystem.AsymetricalPan(120, deathAnimDuration, 120, NPC.Center);
+        }
+
         /*void UpdateFX(bool pushed)
         {
             Main.NewText(sweffecttimer);
@@ -116,17 +168,10 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
             }
         }*/
 
-        /// <summary>
-        /// Basically AI() but it doesnt overrides custom logic 
-        /// </summary>
         public virtual void SafeAI() { }
-        /// <summary>
-        /// Basically SetDefaults() but it doesnt overrides custom logic 
-        /// </summary>
         public virtual void SafeSetDefaults() { }
-        /// <summary>
-        /// Basically SetStaticDefaults() but it doesnt overrides custom logic 
-        /// </summary>
         public virtual void SafeSetStaticDefaults() { }
+        public virtual void SafePreKill() { }
+        public virtual void SafeOnSpawn(IEntitySource source) { }
     }
 }

@@ -12,5 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Dye\" />
+    <Folder Include="Content\NPCs\Grouped\" />
+    <Folder Include="Content\NPCs\Support\" />
   </ItemGroup>
 </Project>

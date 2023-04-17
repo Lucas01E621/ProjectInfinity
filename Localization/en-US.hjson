@@ -17,6 +17,7 @@ Mods: {
 			PlatformBossPlatform.DisplayName: " "
 			GammaSmasher.DisplayName: Gamma Smasher
 			UndeadSkeleton.DisplayName: Undead Skeleton
+			Limb.DisplayName: Limb
 		}
 
 		Buffs: {
@@ -258,6 +259,11 @@ Mods: {
 
 			CrystalVortexStaff: {
 				DisplayName: Crystal Vortex Staff
+				Tooltip: ""
+			}
+
+			LimbTestItem: {
+				DisplayName: Limb Test Item
 				Tooltip: ""
 			}
 		}

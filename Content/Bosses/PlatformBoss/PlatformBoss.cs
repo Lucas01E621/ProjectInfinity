@@ -15,6 +15,7 @@ namespace ProjectInfinity.Content.Bosses.PlatformBoss
     internal class PlatformBoss : ModBoss
     {
         public override bool hasImmunityBeforeFight => true;
+        public override bool hasDeathAnim => true;
         public override int maxHP => 15000;
         public override int defense => 20;
         public override string Texture => AssetDirectory.CrystalHeart + "CrystalHeartBody";
@@ -33,7 +34,7 @@ namespace ProjectInfinity.Content.Bosses.PlatformBoss
         {
             
         }
-        public override void OnSpawn(IEntitySource source)
+        public override void SafeOnSpawn(IEntitySource source)
         {
             for (int i = 0; i < 5; i++)
             {

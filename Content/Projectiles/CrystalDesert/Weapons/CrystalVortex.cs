@@ -20,7 +20,7 @@ namespace ProjectInfinity.Content.Projectiles.CrystalDesert.Weapons
         }
         public override void OnSpawn(IEntitySource source)
         {
-            if (Main.player[Projectile.owner].ownedProjectileCounts[Projectile.type] > 3)
+            if (Main.player[Projectile.owner].ownedProjectileCounts[Projectile.type] >= 3)
             {
                 Projectile.Kill();
             }

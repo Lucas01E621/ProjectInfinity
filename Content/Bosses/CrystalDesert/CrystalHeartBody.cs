@@ -19,6 +19,7 @@ namespace ProjectInfinity.Content.Bosses.CrystalDesert
         public override int maxHP => 15000;
         public override int defense => 25;
         public override bool hasImmunityBeforeFight => true;
+        public override bool hasDeathAnim => true;
         public override string Texture => AssetDirectory.CrystalHeart + "CrystalHeartBody";
         public override string BossHeadTexture => AssetDirectory.CrystalHeart + "CrystalHeartBody_Head_Boss";
         public bool SpawnedMinions
@@ -108,7 +109,7 @@ namespace ProjectInfinity.Content.Bosses.CrystalDesert
             }
 
         }
-        public override void OnSpawn(IEntitySource source)
+        public override void SafeOnSpawn(IEntitySource source)
         {
             SpawnVeins();
         }

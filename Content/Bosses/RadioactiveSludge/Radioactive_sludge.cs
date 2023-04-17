@@ -9,21 +9,24 @@ using Terraria.ModLoader;
 using ProjectInfinity.Common.Systems;
 using ProjectInfinity.Core;
 using ProjectInfinity.Content.NPCs;
+using ProjectInfinity.Common.Systems.CameraHandler;
+using ProjectInfinity.Content.NPCs.BaseTypes;
 
 namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
 {
     [AutoloadBossHead]
-    internal class Radioactive_sludge : ModNPC
+    internal class Radioactive_sludge : ModBoss
     {
         public override string Texture => AssetDirectory.Radioactive_sludge + Name;
         public override string BossHeadTexture => AssetDirectory.Radioactive_sludge + Name + "_Head_Boss";
+        public override int maxHP => 20000;
+        public override int defense => 40;
         public bool SecondStage
         {
             get => NPC.ai[0] == 1f;
             set => NPC.ai[0] = value ? 1f : 0f;
         }
-
-        public override void SetStaticDefaults()
+        public override void SafeSetStaticDefaults()
         {
             Main.npcFrameCount[Type] = 6;
             NPCID.Sets.BossBestiaryPriority.Add(Type);
@@ -42,13 +45,11 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
             NPCID.Sets.DebuffImmunitySets.Add(Type, debuffdata);
         }
 
-        public  void SafeSetDefaults()
+        public override void SafeSetDefaults()
         {
             NPC.width = 80;
             NPC.height = 80;
             NPC.damage = 80;
-            NPC.defense = 40;
-            NPC.lifeMax = 20000;
             NPC.HitSound = SoundID.NPCHit1;
             NPC.DeathSound = SoundID.NPCDeath1;
             NPC.knockBackResist = 0f;
@@ -155,7 +156,7 @@ namespace ProjectInfinity.Content.Bosses.RadioactiveSludge
 
 
 
-        public void SafeAI()
+        public override void SafeAI()
         {
 
             Player player = Main.player[NPC.target];
