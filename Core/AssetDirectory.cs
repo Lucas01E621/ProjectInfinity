@@ -25,6 +25,7 @@ namespace ProjectInfinity.Core
 		//NPCs
 		public const string NPCs = Assets + "NPCs/";
 		public const string CrystalDesertNPC = NPCs + "CrystalDesert/";
+		public const string Support = NPCs + "Support/";
 		public const string Bosses = Assets + "Bosses/";
 		public const string CrystalHeart = Bosses + "CrystalHeart/";
 		public const string PlatformBoss = Bosses + "PlatformBoss/";

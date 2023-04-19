@@ -68,9 +68,7 @@ namespace ProjectInfinity.Content.Items.Weapons.Summoner.Necromancer
             foreach (var bone in bones)
             {
                 bone.Kill();
-                Main.NewText("killed");
             }
-            Main.NewText("spawned");
 
             int index = NPC.NewNPC(bestBone.GetSource_FromAI(), (int)bestBone.position.X, (int)bestBone.position.Y, ModContent.NPCType<UndeadSkeleton>(),0,npcHp);
             NPC npc = Main.npc[index];

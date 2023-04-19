@@ -83,13 +83,14 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
             {
                 timer[0]++;
             }
-                
+            if (NPC.life < 2)
+                timer[1]++;
 
             //UpdateFX(pushed);
             ImmuneBeforeFight(hasImmunityBeforeFight);
             StartFight(any);
             PushPlayer(player, NPC.Hitbox.Intersects(player.Hitbox));
-            DeathAnim();
+            
 
             //this needs to be at the end for extra safety
             SafeAI();
@@ -97,7 +98,8 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
         public sealed override bool PreKill()
         {
             SafePreKill();
-            return !hasDeathAnim;
+            DeathAnim();
+            return SafePreKill();
         }
         public sealed override void OnSpawn(IEntitySource source)
         {
@@ -171,7 +173,7 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
         public virtual void SafeAI() { }
         public virtual void SafeSetDefaults() { }
         public virtual void SafeSetStaticDefaults() { }
-        public virtual void SafePreKill() { }
+        public virtual bool SafePreKill() { return true; }
         public virtual void SafeOnSpawn(IEntitySource source) { }
     }
 }

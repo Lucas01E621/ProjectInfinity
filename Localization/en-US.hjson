@@ -1,4 +1,3 @@
-
 Mods: {
 	ProjectInfinity: {
 		Biomes: {
@@ -18,6 +17,7 @@ Mods: {
 			GammaSmasher.DisplayName: Gamma Smasher
 			UndeadSkeleton.DisplayName: Undead Skeleton
 			Limb.DisplayName: Limb
+			PoisonousSucculent.DisplayName: Poisonous Succulent
 		}
 
 		Buffs: {

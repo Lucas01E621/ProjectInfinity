@@ -20,6 +20,9 @@ namespace ProjectInfinity.Content.Bosses.CrystalDesert
         public override int defense => 25;
         public override bool hasImmunityBeforeFight => true;
         public override bool hasDeathAnim => true;
+        public override int DeathAnimDuration => 120;
+        public override bool hasIntro => true;
+        public override int IntroDuration => 120;
         public override string Texture => AssetDirectory.CrystalHeart + "CrystalHeartBody";
         public override string BossHeadTexture => AssetDirectory.CrystalHeart + "CrystalHeartBody_Head_Boss";
         public bool SpawnedMinions
@@ -93,11 +96,8 @@ namespace ProjectInfinity.Content.Bosses.CrystalDesert
                 NPC.TargetClosest();
             }
 
-            NPC.position.X = (int)NPC.position.X;
-            NPC.position.Y = (int)NPC.position.Y;
-
             Player player = Main.player[NPC.target];
-            UsefulFunctions.DustRing(NPC.Center, 16 * 30, DustID.Adamantite);
+            UsefulFunctions.DustRing(NPC.Center, 16 * 30, DustID.BlueFairy);
 
             if (NPC.Distance(player.position) > 16 * 30)
             {
@@ -203,6 +203,5 @@ namespace ProjectInfinity.Content.Bosses.CrystalDesert
                 }
             }
         }
-
     }
 }
