@@ -1,5 +1,6 @@
 ﻿using ProjectInfinity.Common.Systems.CameraHandler;
 using ProjectInfinity.Content.NPCs.InverseKinematicsTest;
+using ProjectInfinity.Content.Projectiles;
 using ProjectInfinity.Core;
 using Terraria;
 using Terraria.ID;
@@ -21,11 +22,12 @@ namespace ProjectInfinity.Content.Items.Misc
             Item.useTime = 8;
             Item.consumable = false;
             Item.useStyle = ItemUseStyleID.Shoot;
+            Item.shoot = ModContent.ProjectileType<debugproj>();
         }
         public override bool AltFunctionUse(Player player) => true;
         public override bool? UseItem(Player player)
         {
-            CameraSystem.AsymetricalPan(120, 180, 120, Main.MouseWorld);
+            //CameraSystem.AsymetricalPan(120, 180, 120, Main.MouseWorld);
             return true;
         }
 

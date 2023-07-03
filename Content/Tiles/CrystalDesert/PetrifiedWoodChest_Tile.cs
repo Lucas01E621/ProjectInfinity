@@ -31,7 +31,6 @@ namespace ProjectInfinity.Content.Tiles.CrystalDesert
             TileID.Sets.DisableSmartCursor[Type] = true;
 
             AdjTiles = new int[] { TileID.Containers };
-            ItemDrop = ModContent.ItemType<PetrifiedWoodChest>();
 
             // Names
 
@@ -53,7 +52,7 @@ namespace ProjectInfinity.Content.Tiles.CrystalDesert
         }
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
-            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, ItemDrop);
+            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, ModContent.ItemType<PetrifiedWood>());
             Chest.DestroyChest(i, j);
         }
         public static string MapChestName(string name, int i, int j)

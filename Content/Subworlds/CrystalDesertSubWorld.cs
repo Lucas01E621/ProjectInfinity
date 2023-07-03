@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,14 +10,14 @@ using Terraria.WorldBuilding;
 using Terraria.IO;
 using Terraria.ID;
 using Terraria.DataStructures;
-//using StructureHelper;
+using StructureHelper;
 
 namespace ProjectInfinity.Content.Subworlds
 {
     internal class CrystalDesertSubWorld : Subworld
     {
-        public override int Width => 3000;
-        public override int Height => 1000;
+        public override int Width => 500;
+        public override int Height => 500;
 
         public override bool ShouldSave => false;
         public override bool NoPlayerSaving => true;
@@ -50,11 +50,11 @@ namespace ProjectInfinity.Content.Subworlds
                         Tile tile = Main.tile[i, j];
                         tile.HasTile = true;
                         tile.TileType = TileID.Dirt;
+                        //do the loop thingy with blocks to spawn blocks 16 blocks apart
                     }
                 }
-                //StructureHelper.Generator.GenerateStructure("Content/Structures/deneme", new Point16(Main.maxTilesX / 2, Main.maxTilesY / 2 ), ProjectInfinity.Instance);
+                Generator.GenerateStructure("Content/Structures/deneme", new Point16(Main.maxTilesX / 2, Main.maxTilesY / 2), ProjectInfinity.Instance); //TOP RIGHT FOR ROOM LAYOUT STUFF
             }
         }
     }
 }
-*/

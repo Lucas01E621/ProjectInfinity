@@ -1,8 +1,20 @@
 Mods: {
 	ProjectInfinity: {
 		Biomes: {
-			AsteriodBiomeMB.DisplayName: Asteriod Biome
-			CrystalDeserMB.DisplayName: Crystal Desert
+			AsteriodBiomeMB: {
+				DisplayName: Asteriod Biome
+				TownNPCDialogueName: the Asteriod Biome M B
+			}
+
+			CrystalDeserMB: {
+				DisplayName: Crystal Desert
+				TownNPCDialogueName: the Crystal Deser M B
+			}
+
+			AstralOceanMB: {
+				DisplayName: Astral Ocean M B
+				TownNPCDialogueName: the Astral Ocean M B
+			}
 		}
 
 		NPCs: {
@@ -264,6 +276,11 @@ Mods: {
 
 			LimbTestItem: {
 				DisplayName: Limb Test Item
+				Tooltip: ""
+			}
+
+			RoomTile: {
+				DisplayName: Room Tile
 				Tooltip: ""
 			}
 		}

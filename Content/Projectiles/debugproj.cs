@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -18,17 +19,6 @@ namespace ProjectInfinity.Content.Projectiles
             Projectile.height = 50;
             Projectile.timeLeft = 999999999;
         }
-        public override void AI()
-        {
-            for (int i = 0; i < Main.maxProjectiles; i++)
-            {
-                Projectile proj = Main.projectile[i];
-                if (!proj.active) continue;
-                List<int> count = new List<int>();
-                count.Add(proj.type);
-                Main.NewText(count.Count);
-
-            }
-        }
+        
     }
 }

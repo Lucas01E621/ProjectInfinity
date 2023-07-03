@@ -38,14 +38,14 @@ namespace ProjectInfinity.Content.Items.Weapons.Melee.CrystalDesert
 
         public override bool? UseItem(Player player)
         {
-            if (player.altFunctionUse == 2)
+            if (player.altFunctionUse == 2 && UsefulFunctions.IsGrounded(player))
             {
                 player.statMana -= 10;
 
                 Vector2 dir = Main.MouseWorld - player.position;
                 dir.Normalize();
 
-                player.velocity += dir * 12;
+                player.velocity = dir * 12;
 
                 for (int i = 0; i < 20; i++)
                 {
@@ -55,8 +55,5 @@ namespace ProjectInfinity.Content.Items.Weapons.Melee.CrystalDesert
             }
             return true;
         }
-
     }
 }
-
-// garen E shit

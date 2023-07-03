@@ -84,14 +84,12 @@ namespace ProjectInfinity.Content.NPCs.Support
                 Player target = Main.player[NPC.target];
                 Vector2 vel = target.Center - NPC.Center;
                 vel.Normalize();
-                if(timer > 0)
+                if(timer > 30)
                 {
                     Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center,vel * 16, ProjectileID.JavelinHostile, NPC.damage / 3, 1);
                     timer = 0;
                 }
                 timesFired++;
-                
-
             }
             if (timesFired >= 3)
                 timesFired = 0;

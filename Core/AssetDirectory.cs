@@ -69,5 +69,17 @@ namespace ProjectInfinity.Core
 		public const string StructureFolder = "Content/Structures/";
 
 		//misc
+
+		//DLC
+		public const string EndlessDungeons = "ProjectInfinity/EndlessDungeons/";
+		public const string EDAssets = EndlessDungeons + "Assets/";
+
+		public const string EDItems = EDAssets + "Items/";
+		public const string EDTiles = EDAssets + "Tiles/";
+
+		//EDItemTypes
+
+		public const string EDBlock = EDItems + "Blocks/";
+
 	}
 }

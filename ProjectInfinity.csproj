@@ -12,6 +12,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Dye\" />
+    <Folder Include="Content\Items\Misc\BossSummon\" />
     <Folder Include="Content\NPCs\Grouped\" />
+    <Folder Include="EndlessDungeons\Assets\" />
+    <Folder Include="EndlessDungeons\Common\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="StructureHelper">
+      <HintPath>lib\StructureHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="SubworldLibrary">
+      <HintPath>lib\SubworldLibrary.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

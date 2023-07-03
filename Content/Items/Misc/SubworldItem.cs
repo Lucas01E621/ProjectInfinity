@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
-//using ProjectInfinity.Content.Subworlds;
+using ProjectInfinity.Content.Subworlds;
 using ProjectInfinity.Core;
-//using SubworldLibrary;
+using SubworldLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +37,7 @@ namespace ProjectInfinity.Content.Items.Misc
         }
         public override bool? UseItem(Player player)
         {
-            /*if (player.altFunctionUse == 2)
+            if (player.altFunctionUse == 2)
             {
                 SubworldSystem.Exit();
                 return true;
@@ -46,7 +46,7 @@ namespace ProjectInfinity.Content.Items.Misc
             {
                 SubworldSystem.Enter<CrystalDesertSubWorld>();
                 return true;
-            }*/
+            }
             return true;
         }
     }
