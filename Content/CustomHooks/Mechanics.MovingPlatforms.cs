@@ -7,7 +7,7 @@ using Terraria.ID;
 using Terraria;
 using Terraria.IO;
 using Terraria.ModLoader;
-using ProjectInfinity.Core;
+using ProjectInfinity.Common.Players;
 using ProjectInfinity.Content.Bosses.PlatformBoss;
 
 namespace ProjectInfinity.Content.CustomHooks
@@ -29,7 +29,7 @@ namespace ProjectInfinity.Content.CustomHooks
 
 		private void PlatformCollision(Terraria.On_Player.orig_SlopingCollision orig, Player self, bool fallThrough, bool ignorePlats)
 		{
-			if (self.GetModPlayer<ProjectInfinityPlayer>().platformTimer > 0)
+			if (self.GetModPlayer<MPlayer>().platformTimer > 0)
 			{
 				orig(self, fallThrough, ignorePlats);
 				return;
@@ -114,7 +114,7 @@ namespace ProjectInfinity.Content.CustomHooks
 					if (!self.justJumped && self.velocity.Y >= 0)
 					{
 						if (fallThrough)
-							self.GetModPlayer<ProjectInfinityPlayer>().platformTimer = 10;
+							self.GetModPlayer<MPlayer>().platformTimer = 10;
 
 						self.gfxOffY = NPC.gfxOffY;
 						self.velocity.Y = 0;

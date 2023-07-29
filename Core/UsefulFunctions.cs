@@ -46,10 +46,5 @@ namespace ProjectInfinity.Core
         {
             return player.velocity.Y >= 0f && Collision.SolidCollision(player.BottomLeft, 32, 8, true);
         }
-        
-        public static bool OnScreen(Vector2 pos)
-		{
-			return pos.X > -16 && pos.X < Main.screenWidth + 16 && pos.Y > -16 && pos.Y < Main.screenHeight + 16;
-		}
     }
 }

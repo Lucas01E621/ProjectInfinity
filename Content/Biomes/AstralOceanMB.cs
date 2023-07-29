@@ -1,4 +1,4 @@
-﻿using ProjectInfinity.Core.Systems;
+﻿using ProjectInfinity.Common.Systems;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ namespace ProjectInfinity.Content.Biomes
     {
         public override bool IsBiomeActive(Player player)
         {
-            return ModContent.GetInstance<BiomeHandler>().AstralSandCount >= 40; //check gamemode and block count
+            return false; //check gamemode and block count
             //make flying water
             //make shader for water
         }

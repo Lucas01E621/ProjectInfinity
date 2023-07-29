@@ -18,7 +18,8 @@ namespace ProjectInfinity.Content.Projectiles
         public override float MaxRange => 2000;
         public override bool hasMaxCharge => true;
         public override float MaxCharge => 120;
-        public override bool Active => true;
+
+
 
     }
 }

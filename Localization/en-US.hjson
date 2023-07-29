@@ -57,16 +57,6 @@ Mods: {
 				DisplayName: Soul Decay
 				Description: Mods.ProjectInfinity.Buffs.SoulDecay.Description
 			}
-
-			CDCurse: {
-				DisplayName: C D Curse
-				Description: Mods.ProjectInfinity.Buffs.CDCurse.Description
-			}
-
-			EmpoweredBuff: {
-				DisplayName: Empowered Buff
-				Description: Mods.ProjectInfinity.Buffs.EmpoweredBuff.Description
-			}
 		}
 
 		Items: {
@@ -293,36 +283,6 @@ Mods: {
 				DisplayName: Room Tile
 				Tooltip: ""
 			}
-
-			RoomEntranceTile: {
-				DisplayName: Room Entrance Tile
-				Tooltip: ""
-			}
-
-			AstralSandTile: {
-				DisplayName: Astral Sand Tile
-				Tooltip: ""
-			}
-
-			RottenHeart: {
-				DisplayName: Rotten Heart
-				Tooltip: ""
-			}
-
-			InfHealingPotion: {
-				DisplayName: Inf Healing Potion
-				Tooltip: ""
-			}
-
-			InfManaPotion: {
-				DisplayName: Inf Mana Potion
-				Tooltip: ""
-			}
-
-			BezierCurveTestItem: {
-				DisplayName: Bezier Curve Test Item
-				Tooltip: ""
-			}
 		}
 
 		Projectiles: {
@@ -358,9 +318,6 @@ Mods: {
 			TestProjectile1.DisplayName: Test Projectile1
 			CrystalVortex.DisplayName: Crystal Vortex
 			CrystalVortexShard.DisplayName: Crystal Vortex Shard
-			SpaceRock.DisplayName: Space Rock
-			CollidableObject.DisplayName: Collidable Object
-			BezierCurveTest.DisplayName: Bezier Curve Test
 		}
 
 		Tiles: {
@@ -379,38 +336,12 @@ Mods: {
 			CrystalLaser_Tile.MapEntry: Crystal Laser_ Tile
 			AsteroidBlock_Tile.MapEntry: Asteroid Block_ Tile
 			ArenaDoor_Tile.MapEntry: Arena Door_ Tile
-			AstralSand_Tile.MapEntry: Astral Sand_ Tile
 		}
 
 		Walls: {
 			PetrifiedWoodWall_Tile.MapEntry: Petrified Wood Wall_ Tile
 			CrystalSandstoneWall_Tile.MapEntry: Crystal Sandstone Wall_ Tile
 			CrystalGlassWall_Tile.MapEntry: Crystal Glass Wall_ Tile
-		}
-
-		Keybinds: {
-			"Dungeon Quick Heal.DisplayName": Dungeon  Quick  Heal
-			"Dungeon Quick Mana.DisplayName": Dungeon  Quick  Mana
-		}
-
-		Configs: {
-			ProjectInfinityConfig: {
-				DisplayName: Ocean of Infinity config
-
-				PerformanceMode: {
-					Label: Enable performance mode
-					Tooltip: Enables the performance mode for low end pcs.
-				}
-
-				WoundDamage: {
-					Label: Enables the Wound damage
-					Tooltip:
-						'''
-						This is a new damage system will reduce the damage you deal to the bosses by %50 but that damage will turn into Wound damage which can be seen by the yellow text
-						Dealing enough wound damage to a boss will grant you buffs and you can deal normal damage for the buff duration
-						'''
-				}
-			}
 		}
 	}
 }

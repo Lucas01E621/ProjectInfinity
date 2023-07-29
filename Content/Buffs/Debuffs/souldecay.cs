@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
 using Terraria.ID;
+using ProjectInfinity.Common.Players;
+using ProjectInfinity.Common.GlobalNPCs;
 using ProjectInfinity.Core;
 
 namespace ProjectInfinity.Content.Buffs.Debuffs
@@ -22,12 +24,12 @@ namespace ProjectInfinity.Content.Buffs.Debuffs
         }
         public override void Update(Player player, ref int buffIndex)
         {
-            player.GetModPlayer<ProjectInfinityPlayer>().lifeRegenDebuff = true;
+            player.GetModPlayer<MPlayer>().lifeRegenDebuff = true;
         }
         public override void Update(NPC npc, ref int buffIndex)
         {
-            /*npc.GetGlobalNPC<>().lifeRegenDebuff = true;
-            npc.lifeRegen -= 16;*/
+            npc.GetGlobalNPC<GNPC>().lifeRegenDebuff = true;
+            npc.lifeRegen -= 16;
         }
     }
 }

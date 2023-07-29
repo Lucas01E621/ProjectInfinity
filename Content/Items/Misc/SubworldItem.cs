@@ -47,6 +47,7 @@ namespace ProjectInfinity.Content.Items.Misc
                 SubworldSystem.Enter<CrystalDesertSubWorld>();
                 return true;
             }
+            return true;
         }
     }
 }

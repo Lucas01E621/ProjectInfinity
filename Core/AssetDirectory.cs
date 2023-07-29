@@ -15,7 +15,6 @@ namespace ProjectInfinity.Core
 		public const string Bars = Items + "Bars/";
 		public const string Blocks = Items + "Blocks/";
 		public const string CrystalDesertBlocks = Blocks + "CrystalDesert/";
-		public const string AstralOceanBlocks = Blocks + "AstralOcean/";
 		public const string Magic = Items + "Magic/";
 		public const string Melee = Items + "Melee/";
 		public const string Misc = Items + "Misc/";
@@ -43,7 +42,6 @@ namespace ProjectInfinity.Core
 		public const string Tiles = Assets + "Tiles/";
 		public const string CrystalDesert_Tiles = Tiles + "CrystalDesert/";
 		public const string AsteroidField_Tiles = Tiles + "AsteroidField/";
-		public const string AstralOcean_Tiles = Tiles + "AstralOcean/";
 		
 		
 		public const string Debug = Assets + "Default";

@@ -1,4 +1,5 @@
-﻿using ProjectInfinity.Core;
+﻿using ProjectInfinity.Common.Players;
+using ProjectInfinity.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace ProjectInfinity.Content.Items.Weapons.Summoner.Necromancer
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ModContent.GetInstance<ProjectInfinityPlayer>().NecroStaff = true;
+            ModContent.GetInstance<MPlayer>().NecroStaff = true;
         }
     }
 }

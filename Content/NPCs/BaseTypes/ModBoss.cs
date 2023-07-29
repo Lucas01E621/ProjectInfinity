@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
-using ProjectInfinity.Core.Systems.CameraHandler;
+using ProjectInfinity.Common.Systems.CameraHandler;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Graphics.Effects;

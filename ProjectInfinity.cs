@@ -48,7 +48,6 @@ namespace ProjectInfinity
                 loadCache[k].Load();
                 SetLoadingText("Loading " + loadCache[k].GetType().Name);
             }
-            
             LoadFX();
         }
 		public override void Unload()

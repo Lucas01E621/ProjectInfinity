@@ -15,7 +15,6 @@ using ProjectInfinity.Content.Buffs;
 using ProjectInfinity.Core;
 using ProjectInfinity.Content.Projectiles.BaseProjectiles;
 using ProjectInfinity.Content.Projectiles;
-using ProjectInfinity.Core.Systems.CollisionTest;
 
 namespace ProjectInfinity.Content.Items.Misc
 {
@@ -42,7 +41,7 @@ namespace ProjectInfinity.Content.Items.Misc
             Item.DamageType = DamageClass.Magic;
             Item.damage = 10;
             Item.shootSpeed = 15;
-            //Item.shoot = ModContent.ProjectileType<LaserBase1>();
+            Item.shoot = ModContent.ProjectileType<LaserBase1>();
             
         }
         public override bool AltFunctionUse(Player player)
@@ -57,7 +56,7 @@ namespace ProjectInfinity.Content.Items.Misc
             }
             else
             {
-                Projectile.NewProjectile(source, Main.MouseWorld, velocity, ModContent.ProjectileType<CollidableObject>(), damage, knockback, player.whoAmI);
+                Projectile.NewProjectile(source, Main.MouseWorld, velocity, ModContent.ProjectileType<LaserBase1>(), damage, knockback, player.whoAmI);
             }
 
             return false;
