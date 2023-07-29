@@ -1,8 +1,7 @@
-﻿using ProjectInfinity.Common.Players;
+﻿using ProjectInfinity.Core;
 using ProjectInfinity.Content.CustomHooks;
 using ProjectInfinity.Content.NPCs.BaseTypes;
 using ProjectInfinity.Content.Projectiles.BaseProjectiles;
-using ProjectInfinity.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,7 +48,7 @@ namespace ProjectInfinity.Content.Items.Misc
                 }
             } else
             {
-                player.GetModPlayer<MPlayer>().platformTimer = 10;
+                player.GetModPlayer<ProjectInfinityPlayer>().platformTimer = 10;
             }
             return false;
         }

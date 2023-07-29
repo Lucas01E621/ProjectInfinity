@@ -1,6 +1,4 @@
-﻿using ProjectInfinity.Common.GlobalNPCs;
-using ProjectInfinity.Common.Players;
-using ProjectInfinity.Core;
+﻿using ProjectInfinity.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +22,7 @@ namespace ProjectInfinity.Content.Buffs
         }
         public override void Update(Player player, ref int buffIndex)
         {
-            player.GetModPlayer<MPlayer>().hasUpwardsBoostBuff = true;
+            player.GetModPlayer<ProjectInfinityPlayer>().hasUpwardsBoostBuff = true;
         }
         
     }
