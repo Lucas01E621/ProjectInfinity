@@ -9,7 +9,6 @@ using Terraria.IO;
 using Terraria.ID;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
-using ProjectInfinity.Common.Players;
 using ProjectInfinity.Core;
 
 namespace ProjectInfinity.Content.Items.Accessories.CrystalHeart
@@ -29,10 +28,10 @@ namespace ProjectInfinity.Content.Items.Accessories.CrystalHeart
         }
         public override void UpdateEquip(Player player)
         {
-            player.GetModPlayer<MPlayer>().CrystalHeart = true;
-            if (player.GetModPlayer<MPlayer>().died)
+            player.GetModPlayer<ProjectInfinityPlayer>().CrystalHeart = true;
+            if (player.GetModPlayer<ProjectInfinityPlayer>().died)
             {
-                player.GetModPlayer<MPlayer>().CrystalHeart = false;
+                player.GetModPlayer<ProjectInfinityPlayer>().CrystalHeart = false;
                 Item.TurnToAir();
             }
         }

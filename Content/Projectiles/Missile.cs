@@ -13,7 +13,7 @@ namespace ProjectInfinity.Content.Projectiles
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 4;
-
+            
         }
 
         public override void SetDefaults()

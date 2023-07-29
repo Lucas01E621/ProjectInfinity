@@ -18,11 +18,11 @@ namespace ProjectInfinity.Content.Projectiles.BaseProjectiles
     {
         public abstract float MaxCharge { get; }
         public abstract float MaxRange { get; }
-        public virtual bool hasMaxCharge { get; set; }
-        public virtual bool friendly { get; set; } 
-        public virtual bool tileCollide { get; set; }
-        public virtual bool castLight { get; set; }
-        public virtual bool Active { get; set; }
+        public abstract bool hasMaxCharge { get; }
+        public virtual bool friendly { get; } 
+        public abstract bool tileCollide { get; }
+        public abstract bool castLight { get; }
+        public abstract bool Active { get; }
 
         private const float MOVE_DISTANCE = 60f;
         public float maxcharge
@@ -40,11 +40,11 @@ namespace ProjectInfinity.Content.Projectiles.BaseProjectiles
             get => Projectile.ai[0];
             set => Projectile.ai[0] = value;
         }
-        public override void SetStaticDefaults()
+        public override sealed void SetStaticDefaults()
         {
             SafeSetStaticDefaults();
         }
-        public override void SetDefaults()
+        public override sealed void SetDefaults()
         {
             Projectile.width = 10;
             Projectile.height = 10;
@@ -55,7 +55,7 @@ namespace ProjectInfinity.Content.Projectiles.BaseProjectiles
             SafeSetDefaults();
         }
         
-        public override bool PreDraw(ref Color lightColor)
+        public override sealed bool PreDraw(ref Color lightColor)
         {
             // We start drawing the laser if we have charged up
             if (Active)
@@ -66,10 +66,11 @@ namespace ProjectInfinity.Content.Projectiles.BaseProjectiles
             {
 
             }
+            SafePreDraw(lightColor);
             return false;
-
+            
         }
-        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+        public override sealed bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
             if (tileCollide)
             {
@@ -85,14 +86,14 @@ namespace ProjectInfinity.Content.Projectiles.BaseProjectiles
             }
             return false;
         }
-        public override bool ShouldUpdatePosition() => false;
-        public override void CutTiles()
+        public override sealed bool ShouldUpdatePosition() => false;
+        public override sealed void CutTiles()
         {
             DelegateMethods.tilecut_0 = TileCuttingContext.AttackProjectile;
             Vector2 unit = Projectile.velocity;
             Utils.PlotTileLine(Projectile.Center, Projectile.Center + unit * Distance, (Projectile.width + 16) * Projectile.scale, DelegateMethods.CutTiles);
         }
-        public override void AI()
+        public override sealed void AI()
         {
             Player player = Main.player[Projectile.owner];
             Projectile.position = player.Center + Projectile.velocity * MOVE_DISTANCE;
@@ -213,5 +214,6 @@ namespace ProjectInfinity.Content.Projectiles.BaseProjectiles
         public virtual void SafeAI() { }
         public virtual void SafeSetDefaults() { }
         public virtual void SafeSetStaticDefaults() { }
+        public virtual void SafePreDraw(Color lightColor) { }
     }
 }

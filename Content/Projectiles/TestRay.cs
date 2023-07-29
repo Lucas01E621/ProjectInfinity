@@ -28,9 +28,6 @@ namespace ProjectInfinity.Content.Projectiles
         {
             Projectile.rotation = Projectile.Center.DirectionTo(Main.MouseWorld).ToRotation();
             Projectile.spriteDirection = Projectile.direction;
-
-
-            
         }
         public override void AI()
         {
