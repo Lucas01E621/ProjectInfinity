@@ -27,7 +27,7 @@ namespace ProjectInfinity.Core
 
 		public delegate void Update(Particle particle);
 
-		private readonly List<Particle> Particles = new();
+		public readonly List<Particle> Particles = new();
 		private Texture2D Texture;
 		private readonly Update UpdateDelegate;
 

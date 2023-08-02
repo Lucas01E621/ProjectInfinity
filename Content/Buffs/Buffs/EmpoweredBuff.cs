@@ -44,17 +44,17 @@ namespace ProjectInfinity.Content.Buffs
             }
             if(Ranged)
             {
-                tip = "Ranger Empowerment\nRanged damage increse: " + (int)(gamemodeMult * 6) + "%\nMagic crit increse: "+ 10 * gamemodeMult  + "%\nAttack speed increse: " + (int)(gamemodeMult * 10);
+                tip = "Ranger Empowerment\nRanged damage increse: " + (int)(gamemodeMult * 6) + "%\nRanged crit increse: "+ 10 * gamemodeMult  + "%\nAttack speed increse: " + (int)(gamemodeMult * 10);
                 rare = ItemRarityID.Green;
             }
             if(Melee)
             {
-                tip = "Warrior Empowerment\nMelee damage increse: " + (int)(gamemodeMult * 6) + "%\nMagic crit increse: "+ 10 * gamemodeMult  + "%\nAttack speed increse: " + (int)(gamemodeMult * 10);
+                tip = "Warrior Empowerment\nMelee damage increse: " + (int)(gamemodeMult * 6) + "%\nMelee crit increse: "+ 10 * gamemodeMult  + "%\nAttack speed increse: " + (int)(gamemodeMult * 10);
                 rare = ItemRarityID.Orange;
             }
             if(Summoner)
             {
-                tip = "Commander Empowerment\nSummon damage increse: " + (int)(gamemodeMult * 8) + "%\nMagic crit increse: "+ 10 * gamemodeMult  + "%\nAttack speed increse: " + (int)(gamemodeMult * 10);
+                tip = "Commander Empowerment\nSummon damage increse: " + (int)(gamemodeMult * 8) + "%\nSummoner crit increse: "+ 10 * gamemodeMult  + "%\nAttack speed increse: " + (int)(gamemodeMult * 10);
                 rare = ItemRarityID.LightPurple;
             }        
         }

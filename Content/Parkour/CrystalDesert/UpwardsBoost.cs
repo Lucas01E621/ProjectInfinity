@@ -24,15 +24,13 @@ namespace ProjectInfinity.Content.Parkour
         public override void AI()
         {
             Projectile.velocity = Vector2.Zero;
-            for (int i = 0; i < Main.maxPlayers; i++)
+              
+            if (Main.LocalPlayer.getRect().Intersects(Projectile.getRect()))
             {
-                Player p = Main.player[i];
-                if (Main.LocalPlayer.getRect().Intersects(Projectile.getRect()))
-                {
-                    Projectile.Kill();
-                    p.AddBuff(ModContent.BuffType<UpwardsBoostBuff>(), 1200);
-                }
+                Projectile.Kill();
+                Main.LocalPlayer.AddBuff(ModContent.BuffType<UpwardsBoostBuff>(), 1200);
             }
+            
         }
         public override bool PreDraw(ref Color lightColor)
         {

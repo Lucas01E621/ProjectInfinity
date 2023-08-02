@@ -30,6 +30,8 @@ Mods: {
 			UndeadSkeleton.DisplayName: Undead Skeleton
 			Limb.DisplayName: Limb
 			PoisonousSucculent.DisplayName: Poisonous Succulent
+			CrystalCrawler.DisplayName: Crystal Crawler
+			CrystalHeartDeathAnim.DisplayName: Crystal Heart Death Anim
 		}
 
 		Buffs: {
@@ -361,6 +363,7 @@ Mods: {
 			SpaceRock.DisplayName: Space Rock
 			CollidableObject.DisplayName: Collidable Object
 			BezierCurveTest.DisplayName: Bezier Curve Test
+			testShaderProj.DisplayName: test Shader Proj
 		}
 
 		Tiles: {

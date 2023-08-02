@@ -54,7 +54,7 @@ namespace ProjectInfinity.Content.Items.Accessories.NightmareShriek
         }
         public override void OnSpawn(IEntitySource source)
         {
-            if (Main.player[Projectile.owner].ownedProjectileCounts[Projectile.type] >= 1)
+            if (Main.player[Projectile.owner].ownedProjectileCounts[Projectile.type] > 1)
             {
                 Projectile.Kill();
             }

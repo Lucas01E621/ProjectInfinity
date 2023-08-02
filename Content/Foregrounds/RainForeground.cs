@@ -48,10 +48,10 @@ namespace ProjectInfinity.Content.Foregrounds
 			ParticleSystem.DrawParticles(Main.spriteBatch);
 
 			if (Main.rand.NextBool(20))
-				ParticleSystem.AddParticle(new Particle(Vector2.Zero, new Vector2(0, Main.rand.NextFloat(5f, 7f)), 0, Main.rand.NextFloat(0.4f, 0.8f), Color.White, 400, pos + new Vector2(Main.rand.Next(-600, 600), 500), new Rectangle(5, 0, 4, 14), 0.5f));
+				ParticleSystem.AddParticle(new Particle(Vector2.Zero, new Vector2(0, Main.rand.NextFloat(8f, 11f)), 0, Main.rand.NextFloat(0.4f, 0.8f), Color.White, 400, pos + new Vector2(Main.rand.Next(-600, 600), 500), new Rectangle(5, 0, 4, 14), 0.5f));
 
 			if (Main.rand.NextBool(60))
-				ParticleSystem.AddParticle(new Particle(Vector2.Zero, new Vector2(0, Main.rand.NextFloat(8f, 11f)), 0, Main.rand.NextFloat(1.0f, 1.25f), Color.White, 500, pos + new Vector2(Main.rand.Next(-600, 600), 500), new Rectangle(4, 0, 6, 14), 0.5f));
+				ParticleSystem.AddParticle(new Particle(Vector2.Zero, new Vector2(0, Main.rand.NextFloat(12f, 15f)), 0, Main.rand.NextFloat(1.0f, 1.25f), Color.White, 500, pos + new Vector2(Main.rand.Next(-600, 600), 500), new Rectangle(4, 0, 6, 14), 0.5f));
 		}
 	}
 }

@@ -1,4 +1,5 @@
 using ProjectInfinity.Core.Systems.ForegroundSystem;
+using ProjectInfinity.Core.Systems.CameraHandler;
 using ProjectInfinity.Core;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Xna.Framework;
@@ -15,54 +16,74 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using System;
 
-namespace ProjectInfinity.Content.Foregrounds //HORIZONTAL FLOW
+namespace ProjectInfinity.Content.Foregrounds
 {
-	class WindCurrent : ParticleForeground
+	class TestMovement : ParticleForeground
 	{
 		public override bool Visible => false;
 		public override bool OverUI => false;
-
+		public bool test = false;
 		public Texture2D Texture;
-		public int randomDir;
+		
+		
+		public float timerr = 0;
 
 		public override void OnLoad()
 		{
 			ParticleSystem = new ParticleSystem("ProjectInfinity/Assets/Foregrounds/HolyBig", UpdateAshParticles);
 			Texture = ModContent.Request<Texture2D>("ProjectInfinity/Assets/Foregrounds/HolyBig").Value;
-			randomDir = Main.rand.Next(0, 1) == 0 ? -1 : 1; 
+			CameraSystem.AsymetricalPan(120,120,120,Main.MouseWorld);
 		}
 
 		private void UpdateAshParticles(Particle particle)
 		{
 			particle.Timer--;
 
-			particle.StoredPosition.X += particle.Velocity.X;															  //Behaviour
-			particle.StoredPosition.Y += (float)Math.Sin(ProjectInfinityWorld.visualTimer + particle.Velocity.Y) * 0.45f; //
+			Vector2 pos1 = Main.screenPosition + new Vector2(Main.screenWidth / 2, Main.screenHeight / 2) + new Vector2(Main.rand.Next(-600, 600), 500);
+			if(timerr <= 1)
+				timerr += 0.00005f;
+			if(timerr > 1)
+				timerr = 0;
+			
+			Vector2 curveVel;
+			
+			if(pos1.X < Main.screenPosition.X + Main.screenWidth / 2)
+			{
+				curveVel = BezierCurve.QuadrantBezierCurve(pos1, Main.screenPosition + new Vector2(0, Main.screenHeight / 2), pos1 - new Vector2(0, Main.screenHeight), timerr);
+			}else
+			{
+				curveVel = BezierCurve.QuadrantBezierCurve(pos1, Main.screenPosition + new Vector2(Main.screenWidth, Main.screenHeight / 2), pos1 - new Vector2(0, Main.screenHeight), timerr);
+			}
+			curveVel.Normalize();
+			particle.StoredPosition += curveVel;
 
 			particle.Position = particle.StoredPosition - Main.screenPosition;
+			Main.NewText("mouse: " + Main.MouseWorld + "\nParticle: " + particle.Position + "\nParticle count: " + ParticleSystem.Particles.Count);
+			
 
 			particle.Alpha = particle.Timer < 70 ? particle.Timer / 70f : particle.Timer > 630 ? 1 - (particle.Timer - 630) / 70f : 1; //fade effect
         }
 
 		public override void Draw(SpriteBatch spriteBatch, float opacity)
 		{
-			Vector2 pos = Main.screenPosition + new Vector2(0, Main.rand.Next(0, Main.screenHeight));
-            Vector2 vel1 = new Vector2(Main.rand.NextFloat(3.14f, 6.28f), -Main.rand.NextFloat(0.5f, 1f));
-            Vector2 vel2 = new Vector2(Main.rand.NextFloat(3.14f, 6.28f), -Main.rand.NextFloat(1.3f, 1.7f));
+			Vector2 pos1 = Main.screenPosition + new Vector2(Main.screenWidth / 2, Main.screenHeight / 2) + new Vector2(Main.rand.Next(-600, 600), 500);
+
+            
             float rot = 0;
             float scale1 = Main.rand.NextFloat(0.4f, 0.8f);
             float scale2 = Main.rand.NextFloat(1.0f, 1.25f);
             int timeleft1 = (int)(400 * scale1);
             int timeleft2 = (int)(400 * scale2);
+			
 
 			
 			ParticleSystem.DrawParticles(Main.spriteBatch);
 
-			if (Main.rand.NextBool(8))
-				ParticleSystem.AddParticle(new Particle(Vector2.Zero, vel1 , rot, scale1, Color.Yellow, timeleft1, pos, Texture.Bounds));
+			
+				ParticleSystem.AddParticle(new Particle(Vector2.Zero, Vector2.Zero, 0, scale1, Color.White, timeleft1, pos1, Texture.Bounds, 1, 1));
+				
+			
 
-			if (Main.rand.NextBool(20))
-				ParticleSystem.AddParticle(new Particle(Vector2.Zero, vel2, rot, scale2 , Color.Yellow, timeleft2, pos, Texture.Bounds));
 		}
 	}
 }

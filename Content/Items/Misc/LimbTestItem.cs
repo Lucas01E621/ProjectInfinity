@@ -5,6 +5,7 @@ using ProjectInfinity.Core;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using ProjectInfinity.Content.Foregrounds;
 
 namespace ProjectInfinity.Content.Items.Misc
 {
@@ -22,13 +23,13 @@ namespace ProjectInfinity.Content.Items.Misc
             Item.useTime = 8;
             Item.consumable = false;
             Item.useStyle = ItemUseStyleID.Shoot;
+            //Item.Shoot = ModContent.ProjectileType<testShaderProj>();
             
         }
         public override bool AltFunctionUse(Player player) => true;
         public override bool? UseItem(Player player)
         {
             
-            //CameraSystem.AsymetricalPan(120, 180, 120, Main.MouseWorld);
             return true;
         }
 

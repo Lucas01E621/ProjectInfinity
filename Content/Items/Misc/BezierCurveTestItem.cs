@@ -39,7 +39,7 @@ namespace ProjectInfinity.Content.Items.Misc
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.DamageType = DamageClass.Magic;
             Item.damage = 10;
-            Item.shootSpeed = 15;
+            Item.shootSpeed = 0;
             Item.shoot = ModContent.ProjectileType<BezierCurveTest>();
             
         }

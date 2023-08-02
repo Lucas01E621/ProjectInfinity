@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using ProjectInfinity.Core.Systems.CameraHandler;
 using Terraria;
 using Terraria.DataStructures;
@@ -13,17 +14,31 @@ using Terraria.ModLoader;
 
 namespace ProjectInfinity.Content.NPCs.BaseTypes
 {
-    internal abstract class ModBoss : ModNPC
+    public abstract class ModBoss : ModNPC
     {
         public abstract int maxHP { get; }
         public abstract int defense { get; }
+
         /// <summary>
         /// Makes the boss not damageable and not active before player tries to damage it first, needs projectile to work
         /// </summary>
         public virtual bool hasImmunityBeforeFight { get; set; }
+
         public virtual bool canDamageHostile { get; set; }
+
         public virtual bool hasDeathAnim { get; set; }
-        public int deathAnimDuration;
+        public int deathAnimNPCType;
+        public virtual int DeathAnimNPCType
+        {
+            get{ return deathAnimNPCType ;}
+            set{
+                if(hasDeathAnim)
+                    deathAnimNPCType = value;
+            }
+        }
+
+        public static int deathAnimDuration;
+
         public virtual int DeathAnimDuration
         {
             get
@@ -36,8 +51,10 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
                     deathAnimDuration = value;
             }
         }
+
         public virtual bool hasIntro { get; set; }
         public int introDuration;
+
         public virtual int IntroDuration
         {
             get
@@ -53,6 +70,9 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
 
         public int[] ExtraAI = new int[99]; 
         public bool fightStarted = false;
+        public Rectangle PushBox;
+        bool fightCheck = false;
+
         public sealed override void SetStaticDefaults()
         {
             SafeSetStaticDefaults();
@@ -68,16 +88,32 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
             NPC.friendly = false;
             SafeSetDefaults();
         }
+
         int[] timer = new int[99];
+
         int progress = 0;
+
         int sweffecttimer = 0;
+
         public sealed override void AI()
         {
             NPC.TargetClosest();
 
-            Player player = Main.player[NPC.target];
-            Projectile[] proj = Main.projectile.Take(Main.maxProjectiles).Where(p => p.active && p.owner == player.whoAmI).ToArray();
-            bool any = proj.Any(p => p.Hitbox.Intersects(NPC.Hitbox));
+            for (int i = 0; i < Main.maxPlayers; i++)
+            {
+                Player plr = Main.player[i];
+                if(!plr.active && plr.dead) continue;
+
+                for (int j = 0; j < Main.maxProjectiles; j++)
+                {
+                    Projectile proj = Main.projectile[i];
+                    if(!proj.active && proj.owner != plr.whoAmI) continue;
+                    
+                    if(proj.Hitbox.Intersects(NPC.Hitbox))
+                        fightCheck = true;
+                }
+                PushPlayer(plr, plr.Hitbox.Intersects(PushBox));
+            }
 
             if (fightStarted)
             {
@@ -88,26 +124,31 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
 
             //UpdateFX(pushed);
             ImmuneBeforeFight(hasImmunityBeforeFight);
-            StartFight(any);
-            PushPlayer(player, NPC.Hitbox.Intersects(player.Hitbox));
+            StartFight(fightCheck);
+            
             
 
             //this needs to be at the end for extra safety
             SafeAI();
         }
+
         public sealed override bool PreKill()
         {
             SafePreKill();
             DeathAnim();
-            return SafePreKill();
+            return !hasDeathAnim;
         }
+
         public sealed override void OnSpawn(IEntitySource source)
         {
             if (hasIntro && fightStarted)
                 CameraSystem.AsymetricalPan(120, introDuration, 120, NPC.Center);
 
+            PushBox = new( (int)NPC.position.X * 2, (int)NPC.position.Y * 2, 60 * 16, 60 * 16 );
+
             SafeOnSpawn(source);
         }
+
         private void ImmuneBeforeFight(bool immunityBeforeStart)
         {
             if (immunityBeforeStart && !fightStarted)
@@ -117,6 +158,7 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
                 NPC.friendly = true;
             }
         }
+
         private void StartFight(bool projectile)
         {
             if(!fightStarted &&  (projectile || !hasImmunityBeforeFight))
@@ -126,7 +168,9 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
                 fightStarted = true;
             }
         }
+
         bool pushed = false;
+
         private void PushPlayer(Player player,bool insideBoss)
         {
             if (insideBoss && fightStarted && !pushed)
@@ -140,16 +184,24 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
             {
                 NPC.friendly = false;
             }
+            
+            if(!insideBoss && fightStarted && !pushed)
+                pushed = true;
+
 
             /*if (Main.netMode != NetmodeID.Server && !Filters.Scene["Shockwave"].IsActive())
             {
                 Filters.Scene.Activate("Shockwave", NPC.Center).GetShader().UseColor(3, 5, 13).UseTargetPosition(NPC.Center);
             }*/
         }
+
         private void DeathAnim()
         {
             if(hasDeathAnim && NPC.life <= 2)
-                CameraSystem.AsymetricalPan(120, deathAnimDuration, 120, NPC.Center);
+            {
+                NPC.NewNPC(NPC.GetSource_FromAI(),(int)NPC.position.X, (int)NPC.position.Y, deathAnimNPCType, NPC.whoAmI);
+                CameraSystem.AsymetricalPan(40, deathAnimDuration, 40, NPC.Center);
+            }
         }
 
         /*void UpdateFX(bool pushed)
@@ -170,10 +222,30 @@ namespace ProjectInfinity.Content.NPCs.BaseTypes
             }
         }*/
 
+        /// <summary>
+        /// safe variant of the original hook, prevents overriding the ModBoss code
+        /// </summart>
         public virtual void SafeAI() { }
+
+        /// <summary>
+        /// safe variant of the original hook, prevents overriding the ModBoss code
+        /// </summart>
         public virtual void SafeSetDefaults() { }
+
+        /// <summary>
+        /// safe variant of the original hook, prevents overriding the ModBoss code
+        /// </summart>
         public virtual void SafeSetStaticDefaults() { }
+
+        /// <summary>
+        /// safe variant of the original hook, prevents overriding the ModBoss code
+        /// </summart>
+        /// <returns> Ture by default, returun False to prevent the npc from dropping items. It does not prevent the npc from dying npc still dies! </returns>
         public virtual bool SafePreKill() { return true; }
+
+        /// <summary>
+        /// safe variant of the original hook, prevents overriding the ModBoss code
+        /// </summart>
         public virtual void SafeOnSpawn(IEntitySource source) { }
     }
 }

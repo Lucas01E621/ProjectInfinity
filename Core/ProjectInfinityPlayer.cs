@@ -39,6 +39,7 @@ namespace ProjectInfinity.Core
             hasUpwardsBoostBuff = false;
             Empowered = false;
             HasSuit = false;
+            NecroStaff = false;
         }
 
         public override void UpdateBadLifeRegen()
@@ -137,7 +138,7 @@ namespace ProjectInfinity.Core
                 for (int i = 0; i < Main.InventorySlotsTotal; i++)
                 {
                     Item item = Player.inventory[i];
-                    if (item.IsAir || item.DamageType == DamageClass.Generic || item.damage == 0 || item.pick > 0 || item.hammer > 0 || item.axe > 0)
+                    if (item.IsAir || item.DamageType == DamageClass.Generic || item.damage == 0 || item.pick > 0 || item.hammer > 0 || item.axe > 0 || item.DamageType == DamageClass.Default)
                     {
                         continue;
                     }
@@ -161,7 +162,7 @@ namespace ProjectInfinity.Core
                         highestItemCountClass = pair.Key;
                     }
                 }
-                if (highestItemCountClass != null && highestItemCountClass != DamageClass.Generic)
+                if (highestItemCountClass != null)
                 {
                     if(highestItemCountClass == DamageClass.Magic)
                     {

@@ -55,6 +55,7 @@ namespace ProjectInfinity.Core.Systems.CameraHandler
         }
         public override void OnWorldLoad()
         {
+            
             Reset();
         }
 

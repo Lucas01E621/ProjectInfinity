@@ -33,9 +33,6 @@ namespace ProjectInfinity.Content.Bosses.CrystalDesert
 
         public bool HasPosition => PositionIndex > -1;
 
-        public const float RotationTimerMax = 360;
-        public ref float RotationTimer => ref NPC.ai[2];
-
         // Helper method to determine the body type
         public static int BodyType()
         {
@@ -67,6 +64,8 @@ namespace ProjectInfinity.Content.Bosses.CrystalDesert
             NPC.life = NPC.lifeMax;
             NPC.dontTakeDamage = true;
             downed = true;
+            Main.NewText(downed);
+            ModContent.GetInstance<CrystalHeartBody>().LivingVeinCount--;
             SpawnMinions();
             return false;
         }
@@ -93,7 +92,7 @@ namespace ProjectInfinity.Content.Bosses.CrystalDesert
             for (int i = 0; i < count; i++)
             {
                 if (NPC.ai[3] >= 6) return;
-                int index = NPC.NewNPC(entitySource, (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<bob>(), NPC.whoAmI);
+                int index = NPC.NewNPC(entitySource, (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<CrystalCrawler>(), NPC.whoAmI);
                 NPC minionNPC = Main.npc[index];
 
                 NPC.ai[3]++;
