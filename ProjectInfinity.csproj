@@ -16,6 +16,7 @@
     <Folder Include="Content\NPCs\Grouped\" />
     <Folder Include="EndlessDungeons\Assets\" />
     <Folder Include="EndlessDungeons\Common\" />
+    <Folder Include="Sounds\Music\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="StructureHelper">
